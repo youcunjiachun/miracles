@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 100px auto;
+            animation: blink1 .1s linear infinite;
+        }
+        @keyframes blink1 {
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<canvas height="200" width="200"></canvas>
+</body>
+</html>
+<script>
+    let cas=document.getElementsByTagName("canvas")[0].getContext("2d");
+    cas.beginPath();
+    cas.arc(100,100,100,0,Math.PI*2);
+    cas.closePath();
+    cas.stroke();
+    cas.beginPath();
+    cas.arc(100,50,50,Math.PI*3/2,Math.PI*1/2,true);
+    cas.stroke();
+    cas.beginPath();
+    cas.arc(100,150,50,Math.PI*1/2,Math.PI*3/2,true);
+    cas.stroke();
+    cas.beginPath();
+    cas.arc(100,50,10,0,Math.PI*2);
+    cas.closePath();
+    cas.fill();
+    cas.beginPath();
+    cas.arc(100,150,10,0,Math.PI*2);
+    cas.closePath();
+    cas.stroke();
+
+</script>

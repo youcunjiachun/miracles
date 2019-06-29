@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--<script src="../lib/vue-2.4.0.js"></script>-->
+<script>
+    function cb(val) {
+        console.log("视图更新了")
+    }
+    function defineReactive(obj,key,val) {
+        Object.defineProperty(obj,key,{
+            enumerable:true,
+            configurable:true,
+            get:function ReactiveGetter() {
+                return val
+            },
+            set:function ReactiveSetter(newval) {
+                if(newval===val)return;
+                cb(newval)
+            }
+        })
+    };
+    function Observer(value) {
+        Object.keys(value).forEach((key)=>{
+            defineReactive(value,key,value[key])
+        })
+    }
+    class Vue{
+        constructor(options){
+            this._data=options.data;
+            Observer(this._data)
+        }
+    }
+    let o=new Vue({
+        data:{
+            test:"i am test"
+        }
+    });
+    o._data.test="123"
+</script>

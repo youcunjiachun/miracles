@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 3000px;
+            background-color: #ccc;
+        }
+        #demo{
+            text-align: center;
+            width: 100px;
+            line-height: 100px;
+            background-color: RGBA(0,255,0,0.5);
+            position: fixed;
+            bottom: 10px;
+            right: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">回到顶部</div>
+</body>
+</html>
+<script>
+    var demo=document.getElementById("demo");
+    window.onscroll=debounce(function(){
+        var top=document.documentElement||document.body;
+        console.log(top.scrollTop);
+        if(top.scrollTop>1500){
+            demo.style.display="block"
+        }else{
+            demo.style.display="none"
+        }
+    });
+    demo.onclick=function(){
+        var top=document.documentElement||document.body;
+        var tp=top.scrollTop;
+        this.timer=setInterval(function () {
+            var step=Math.ceil((tp-0)/10);
+            tp-=step;
+            if(tp<=0){
+                clearInterval(this.timer)
+            }
+            top.scrollTop=tp;
+        }.bind(this),16.6);
+
+    };
+    function debounce(fn) {
+        var timer=null;
+        return  function () {
+            clearTimeout(timer);
+            timer=setTimeout(fn,100)
+        }
+    }
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var name="name";
+    var obj={
+        name:"rcl",
+        sayhi:function (age) {
+            this.name=name;
+            alert(this+age)
+        }
+    };
+    obj.sayhi.apply(window,["rcl"]);
+    function aa(a,b) {
+        return a+b
+    }
+    console.log(aa.apply(window,[1,3]))
+</script>

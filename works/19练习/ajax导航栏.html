@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            float: left;
+            line-height: 60px;
+            width: 94px;
+            text-align: center;
+            background-color: #f00;
+        }
+        li span{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <!--<ul>-->
+        <!--<li>1<span><p>123</p></span></li>-->
+        <!--<li>2<span><p>123</p></span></li>-->
+    <!--</ul>-->
+</div>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    $.ajax({
+        url:"../json/data.json",
+        success:function (data) {
+            var ul=$("<ul></ul>");
+            $("#demo").append(ul);
+            $(data).each(function (index,value) {
+                var li=$("<li>"+value.title+"</li>");
+                var span=$("<span></span>");
+                $("li").append(span);
+                if(value.area){
+                    for(var i=0;i<value.area.length;i++){
+                        $("<p>"+value.area[i]+"</p>").appendTo(span)
+                    }
+                }
+                $("ul").append(li);
+            })
+            $("li").hover(function () {
+                $(this).children().show()
+            },function () {
+                $(this).children().hide()
+            })
+        }
+    })
+</script>

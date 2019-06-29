@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index4.css">
+</head>
+<body>
+    <div class="header">
+        <div class="leftside"><a href="#"><img src="images/leftctl.jpg" alt=""></a></div>
+        <h1>运营推广<span></span><div class="bannerout">
+            <ul>
+                <li><a href="#"><img src="images/concat.jpg" alt="">产品经理</a></li>
+                <li><a href="#"><img src="images/concat.jpg" alt="">产品经理</a></li>
+                <li><a href="#"><img src="images/concat.jpg" alt="">产品经理</a></li>
+                <li><a href="#"><img src="images/concat.jpg" alt="">产品经理</a></li>
+            </ul>
+        </div></h1>
+        <div class="rightside">
+            <div class="login"><img src="images/login.jpg" alt=""></div>
+            <div class="menu"><img src="images/menu.jpg" alt=""></div>
+        </div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="">网站建设</a></li>
+            <li><a href="">网站建设</a></li>
+            <li><a href="">SEO</a></li>
+            <li><a href="">SEM</a></li>
+            <li><a href="">SEM</a></li>
+            <li><a href="">网站建设</a></li>
+            <li><a href="">网站建设</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <ul>
+            <li><img src="images/seo.jpg" alt="">
+                <div class="rightside"><h3>淘宝天猫售后“偏袒”规则</h3>
+                <p>对于刚起步做电商的朋友们来说,淘宝天猫规则制度一定……</p>
+            <img src="images/jielun.jpg" alt=""><i>周杰伦 08 月 24 日 18:30</i></div></li>
+            <li><img src="images/seo.jpg" alt="">
+                <div class="rightside"><h3>淘宝天猫售后“偏袒”规则</h3>
+                <p>对于刚起步做电商的朋友们来说,淘宝天猫规则制度一定……</p>
+            <img src="images/jielun.jpg" alt=""><i>周杰伦 08 月 24 日 18:30</i></div></li>
+            <li><img src="images/seo.jpg" alt="">
+                <div class="rightside"><h3>淘宝天猫售后“偏袒”规则</h3>
+                <p>对于刚起步做电商的朋友们来说,淘宝天猫规则制度一定……</p>
+            <img src="images/jielun.jpg" alt=""><i>周杰伦 08 月 24 日 18:30</i></div></li>
+            <li><img src="images/seo.jpg" alt="">
+                <div class="rightside"><h3>淘宝天猫售后“偏袒”规则</h3>
+                <p>对于刚起步做电商的朋友们来说,淘宝天猫规则制度一定……</p>
+            <img src="images/jielun.jpg" alt=""><i>周杰伦 08 月 24 日 18:30</i></div></li>
+            <li><img src="images/seo.jpg" alt="">
+                <div class="rightside"><h3>淘宝天猫售后“偏袒”规则</h3>
+                <p>对于刚起步做电商的朋友们来说,淘宝天猫规则制度一定……</p>
+            <img src="images/jielun.jpg" alt=""><i>周杰伦 08 月 24 日 18:30</i></div></li>
+        </ul>
+    </div>
+    <div class="bottom">
+            <div class="leftline"></div>
+            <div class="rightline"></div>
+            <p>关注我们</p>
+            <div class="icons">
+                <img src="images/wechat.jpg" alt="">
+                <img src="images/weibo.jpg" alt="">
+                <img src="images/tel.jpg" alt="">
+            </div>
+            <div class="friendlink">
+                <i>Copyright©1999-2015 北京中公未来教育咨询有限公司<br>.All Rights Reserved 京ICP备10218183号<br>电脑版 | APP下载</i>
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    document.documentElement.style.fontSize=100+"px";
+    function debounce(fn){
+        var timer=null;
+        return function(){
+            clearTimeout(timer)
+           timer=setTimeout(fn,100)
+        }
+    }
+    window.onresize=debounce(function(){
+        var clientWidth=document.documentElement.clientWidth;
+    var fs = null;
+    if(clientWidth>720){
+        fs=100
+    }
+    else{
+        fs=(clientWidth*100)/720
+    }
+    document.documentElement.style.fontSize=fs+"px";
+    console.log(fs)
+    })
+</script>

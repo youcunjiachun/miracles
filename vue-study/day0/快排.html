@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+// var arr=[1,2,3,7,5,63,2,45,234,24,25,43,6,46475,75,74,6,43,5,2,45]
+
+// function quicksort(arr){
+//     if(arr.length<=1){
+//         return arr
+//     }
+//     let mid=Math.floor(arr.length/2);
+//     let midval=arr.splice(mid,1).pop()
+//     let left=[];
+//     let right=[];
+//     arr.forEach(function(value,index){
+//         if(value<midval){
+//             left.push(value)
+//         }else{
+//             right.push(value)
+//         }
+//     })
+//     return quicksort(left).concat([midval],quicksort(right))
+// }
+// console.log(quicksort(arr))
+function fn(num){
+    if(num==1||num==0){
+        return 1
+    }else{
+        let a=fn(num-1)+fn(num-2);
+        return a
+    }
+}
+console.log(fn(7))
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>{{add}}</div>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            one:1,
+            two:2
+        },
+        methods:{
+
+        },
+        computed:{
+            add(){
+                return this.one+this.two
+            }
+        }
+    })
+</script>

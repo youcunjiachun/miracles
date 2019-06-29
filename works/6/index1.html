@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>请输入要倒计时的时间:
+    <input type="text" value="2019">年
+    <input type="text" value="5">月
+    <input type="text" value="1">日
+</p>
+<button>开始运算</button>
+<div></div>
+<div></div>
+</body>
+</html>
+<script>
+    var divs=document.getElementsByTagName("div");
+    var inputs=document.getElementsByTagName("input");
+    var btns=document.getElementsByTagName("button");
+    var timer=null;
+    btns[0].addEventListener("click",function () {
+        clearInterval(timer);
+        getnow();
+        timer=setInterval(getnow,1000)
+    });
+    function getnow() {
+        var future=new Date(parseInt(inputs[0].value),parseInt(inputs[1].value)-1,parseInt(inputs[2].value));
+        console.log(new Date(parseInt(inputs[0].value)+"/"+parseInt(inputs[1].value)+"/"+parseInt(inputs[2].value) +" "+"00:00:00"));
+        var now=new Date();
+        var year=now.getFullYear();
+        var month=now.getMonth();
+        var date=now.getDate();
+        var hours=now.getHours();
+        var minutes=now.getMinutes();
+        var getSeconds=now.getSeconds();
+        divs[0].innerHTML="现在的时间是"+year+"年"+(month+1)+"月"+date+"日"+" "+hours+"时"+minutes+"分"+getSeconds+"秒";
+        var diffence=(future-now)/1000;
+        var ds=parseInt(diffence%60);
+        var dm=parseInt(diffence/60%60);
+        var dh=parseInt(diffence/60/60%24);
+        var dy=parseInt(diffence/60/60/24);
+        divs[1].innerHTML="距输入的时间还剩"+dy+"天"+dh+"时"+dm+"分"+ds+"秒"
+
+    }
+
+
+</script>

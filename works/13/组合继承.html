@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Me(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    Me.prototype.sayname=function () {
+        alert(1)
+    };
+
+    function He(name,age) {
+        Me.apply(this,[name,age])
+    };
+    He.prototype=new Me();
+    var he=new He("rcl",21);
+    he.sayname();
+    console.dir(he)
+</script>

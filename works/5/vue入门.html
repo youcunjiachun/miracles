@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <p v-cloak>123{{msg}}123</p>
+    <h4 v-text="msg"></h4>
+</div>
+</body>
+</html>
+<script>
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            msg:"Hello World"
+        }
+    })
+</script>

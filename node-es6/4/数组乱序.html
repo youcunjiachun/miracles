@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function luan(arr) {
+        var length=arr.length;
+        var l=0;
+        var rand=0;
+        while(length){
+            rand=Math.floor(Math.random*length--);
+            [arr[length],arr[rand]]=[arr[rand],arr[length]]
+        }
+
+    }
+</script>

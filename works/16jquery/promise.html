@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function myPromise(fn) {
+        var that=this;
+        that.state="pending";
+        that.value=null;
+        that.resolvedcallbacks=[];
+        that.rejectedcallbacks=[];
+        function resolve(value) {
+            if(that.state=="pending"){
+                that.state="resolved";
+                that.value=value;
+                that.resolvedcallbacks.map(function (value2) {
+                    value2(that.value)
+                })
+            }
+        }
+        function reject(value) {
+            if(that.state=="pending"){
+                that.state="rejected";
+                that.value=value;
+                that.rejectedcallbacks.map(function (value2) {
+                    value2(that.value)
+                })
+            }
+                }
+            fn(resolve, reject)
+    }
+    //下面是then()
+    myPromise.prototype.then=function (onFulfilled,onRejected){
+        var that=this;
+        onFulfilled=typeof onFulfilled=="function"?onFulfilled:v=>v;
+        onRejected=typeof onRejected=="function"?onRejected:r=>{
+            return
+        }
+        if(that.state=="pending"){
+            that.resolvedcallbacks.push(onFulfilled);
+            that.rejectedcallbacks.push(onRejected)
+        }
+        if(that.state=="resolved"){
+            onFulfilled(that.value)
+        }
+        if(that.state=="rejected"){
+            onRejected(that.value)
+        }
+    };
+    new myPromise((resolve, reject) => {
+        setTimeout(() => {
+        resolve(1)
+    }, 0)
+    }).then(value => {
+        console.log(value)
+    })
+</script>

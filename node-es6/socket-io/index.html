@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+</ul>
+<input type="text" placeholder="请输入发送的内容"><button>发送</button>
+</body>
+</html>
+<script src="/jquery.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let socket=io();
+    let str="";
+    $("button").click(function () {
+        socket.emit("send",$("input").val());
+        $("ul").append(`<li>${$("input").val()}</li>`)
+    });
+    socket.on("receive",function (msg) {
+        console.log(msg);
+        str="<li>"+msg+"</li>";
+        $("ul").append(str)
+    });
+</script>

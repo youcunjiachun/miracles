@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    Function.prototype.myCall = function(context) {
+        if (typeof this !== 'function') {
+            throw new TypeError('Error')
+        }
+        context = context || window;
+        context.fn = this;
+        var old=Array.from(arguments);
+        var args =old.slice(1);
+        var result = context.fn(args);
+        delete context.fn;
+        return result
+    }
+    function he() {
+        alert(this)
+    };
+    function Me() {
+    }
+    var me=new Me();
+    he.myCall(me)
+
+
+</script>

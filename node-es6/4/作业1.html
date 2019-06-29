@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ::selection{
+            background-color:#f00;
+            color:#000;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: #04281e;
+        }
+        ul{
+            text-align: center;
+            line-height: 67px;
+            color:red;
+            font-size: 67px;
+        }
+        li{
+            line-height: 40px;
+            text-align: center;
+            background-color: RGBA(0,0,0,0.5);
+            color: #f00;
+            width: 1000px;
+            font-size: 20px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        div{
+            color:#fff;
+            font-size: 14px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+<ul>恐怖故事</ul>
+</body>
+</html>
+<script src="../socket-io/jquery.js"></script>
+<script>
+    function ajax(url) {
+        return new Promise(function (resolved,rejected) {
+            $.ajax({
+                url:url,
+                dataType:"json",
+                success:function (data) {
+                    resolved(data);
+                }
+            })
+        })
+    }
+    // p.then(function (val) {
+    //     console.log(val[0].link)
+    // });
+    async function getdata(url,flag) {
+        var a=null;
+            a=await ajax(url);
+        if(flag==1){
+            var b=a.showapi_res_body.pagebean.contentlist;
+            for(var i=0;i<b.length;i++){
+                $("ul").append($("<li><a>"+b[i].title+"</a></li>"));
+            }
+            $("li").on("mouseover",function () {
+                console.log($(this).index());
+                getdata("http://route.showapi.com/955-2?id="+b[$(this).index()].link+"&page=1&showapi_appid=96669&showapi_sign=9cc6c906d1224ff5ab2850a76de4310e&type=mj&page=1",2);
+            })
+        }else{
+            $("li").hover(function () {
+                $(this).append("<div>"+a.showapi_res_body.text+"</div>")
+            },function () {
+                $(this).children().next().remove()
+            });
+        }
+    }
+    getdata("http://route.showapi.com/955-1?showapi_appid=96669&showapi_sign=9cc6c906d1224ff5ab2850a76de4310e&type=mj&page=1",1);
+</script>

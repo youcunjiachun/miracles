@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function myPromise(fn) {
+        let that=this;
+        that.state="pending";
+        that.value=null;
+        that.resolvedCallbacks=[];
+        that.rejectedCallbacks=[];
+        function rejected(value) {
+            if(that.state=="pendding"){
+                that.state="rejected";
+                that.value=value;
+                that.rejectedCallbacks.map(cb=>cb(that.value))
+            }
+        };
+        function resolved(value) {
+            if(that.state=="pending"){
+                that.state="resolved";
+                that.value=value;
+                that.resolvedCallbacks.map(cb=>cb(that.value))
+            }
+
+        }
+        fn(resolved,rejected)
+    }
+    myPromise.prototype.then=function (res,rej) {
+        let that=this;
+        if (that.state === "pendding") {
+            that.resolvedCallbacks.push(onFulfilled);
+            that.rejectedCallbacks.push(onRejected)
+        }
+        if (that.state === "resolved") {
+            res(that.value)
+        }
+        if (that.state === "rejected") {
+            rej(that.value)
+        }
+
+    };
+    var p=new myPromise(function (resolved,rejected) {
+        resolved("123")
+    });
+        p.then(function (val) {
+        console.log(val)
+    });
+    console.log(p)
+</script>

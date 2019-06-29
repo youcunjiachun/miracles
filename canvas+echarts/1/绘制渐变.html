@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+</body>
+</html>
+<script>
+    let cas=document.getElementsByTagName("canvas")[0].getContext("2d");
+    cas.beginPath();
+    cas.arc(250,250,250,0,Math.PI*2);
+    cas.closePath();
+    cas.clip();
+    let style1=cas.createLinearGradient(0,0,0,500);
+    style1.addColorStop(0,'red');
+    style1.addColorStop(0.2,'orange');
+    style1.addColorStop(0.3,'yellow');
+    style1.addColorStop(0.5,'green');
+    style1.addColorStop(0.6,'blue');
+    style1.addColorStop(0.8,'skyblue');
+    style1.addColorStop(1,'purple');
+    cas.fillStyle=style1;
+    cas.fillRect(0,0,500,500)
+
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo=document.getElementById("demo");
+    on(demo,"click",function () {
+        alert("1")
+    });
+    on(demo,"mouseover",function () {
+        alert("1")
+    });
+    function on(obj,event,fn) {
+        if(obj.attachEvent){
+            obj.attachEvent("on"+event,fn)
+        }else{
+            obj.addEventListener(event,fn,false)
+        }
+    }
+</script>

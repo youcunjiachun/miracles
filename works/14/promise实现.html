@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    const PENDING="pending";
+    const RESOLVED="resolved";
+    const REJECTDE="rejected";
+    function Mypromise(fn) {
+        const that=this;
+        that.state=PENDING;
+        that.value=null;
+        that.resolvedcallbacks=[];
+        that.rejectedcallbacks=[];
+        function resolve(value) {
+            if(that.state===PENDING){
+                that.state=RESOLVED;
+                that.value=value;
+                that.resolvedcallbacks.map(cb=>cb(that.value))
+            }
+        };
+        function reject(value) {
+            if (that.state===PENDING){
+                that.state=REJECTDE;
+                that.value=value;
+                that.rejectedcallbacks.map(cb=>cb(that.value))
+            }
+        }
+        try{
+            fn(resolve,reject)
+        }catch(e){
+            reject(e)
+        }
+    }
+    Mypromise.prototype.then=function () {
+        
+    }
+</script>

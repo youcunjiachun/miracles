@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Me(name) {
+        this.name=name;
+        this.color=["red"]
+    }
+    function He() {
+    }
+    He.prototype=new Me("rcl");
+    var he=new He();
+    var he2=new He();
+    he2.color.push("green");
+    console.log(he.color);
+    var me=new Me("rcl");
+    console.log(me.color);
+    console.log(me.__proto__);
+
+</script>

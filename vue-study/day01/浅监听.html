@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="change">改变</button>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            msg:"123",
+            obj:{
+                name:"rcl",
+                age:21
+            }
+        },
+        methods:{
+            change(){
+                this.msg="456";
+                this.obj.name="????"
+            }
+        },
+        watch:{
+            obj:{
+                deep:true,
+                handler(val){
+                    console.log(val)
+                }
+            },
+            msg(a,b){
+                console.log(a,b)
+            }
+        }
+    });
+    // vm.$watch("obj",function (newval,oldval) {
+    //     console.log(newval,oldval)
+    // })
+</script>

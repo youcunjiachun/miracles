@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var person=(function () {//返回的是一个对象，因为有自执行函数，所以person是对象
+        var name="rcl";
+        return {
+            getname:function () {
+                return name
+            },
+            setname:function (newname) {
+                name=newname
+            }
+        }
+    })();
+    person.setname("rcl2");
+    console.log(person.name);
+    console.log(person.getname())
+</script>

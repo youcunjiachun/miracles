@@ -1,0 +1,32 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cookie-session": "^1.3.3",
+    "crypto": "^1.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "mime": "^2.4.3",
+    "mongoose": "^5.5.15",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "socket.io": "^2.2.0",
+    "websocket": "^1.0.28",
+    "websocketio": "^1.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

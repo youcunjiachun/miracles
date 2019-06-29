@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            position: relative;
+            width: 1000px;
+            margin:  50px auto
+        }
+        #demo ul{
+            list-style: none;
+        }
+        #demo>ul li{
+            width: 200px;
+            height: 100px;
+            background-color: #f00;
+            line-height: 100px;
+            font-size: 40px;
+            text-align: center;
+        }
+        #right{
+            position: absolute;
+            top: 0;
+            left: 200px;
+        }
+        #right div{
+            height: 340px;
+            width: 800px;
+            background-color: #00f;
+            line-height: 340px;
+            font-size: 100px;
+            text-align: center;
+        }
+        #right li{
+            float: left;
+            width: 200px;
+            height: 60px;
+            background-color: #0f0;
+            line-height: 60px;
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <div id="right">
+        <div id="div">a1</div>
+        <ul>
+            <li>a1</li>
+            <li>a2</li>
+            <li>a3</li>
+            <li>a4</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var ul=document.getElementsByTagName("ul");
+    var lis1=ul[0].getElementsByTagName("li");
+    var div=document.getElementById("div");
+    var right=document.getElementById("right");
+    var lis2=right.getElementsByTagName("li");
+    function fn(x) {
+        lis2[x].onclick=function () {
+            for(var i=0;i<lis2.length;i++){
+                lis2[i].style.backgroundColor="#0f0";
+            }
+            this.style.backgroundColor="#fff";
+            div.innerHTML=this.innerHTML+1;
+        };
+        lis1[x].onclick=function () {
+            for(var i=0;i<lis1.length;i++){
+                lis1[i].style.backgroundColor="#f00";
+                lis2[i].innerHTML=i+1;
+                lis2[i].style.backgroundColor="#0f0";
+                lis2[i].innerHTML=this.innerHTML+lis2[i].innerHTML;
+            }
+            div.innerHTML=this.innerHTML;
+            this.style.backgroundColor="yellow";
+            lis2[x].style.backgroundColor="#fff";
+        };
+        }
+    }
+    fn(1);
+    fn(2);
+    fn(3);
+    fn(0);
+
+</script>

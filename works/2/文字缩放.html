@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text">
+<select name="" id="sel">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type="text">
+<button>=</button>
+<input type="text">
+</body>
+</html>
+<script>
+var btn=document.getElementsByTagName("button");
+var inputs=document.getElementsByTagName("input");
+var sel=document.getElementById("sel");
+btn[0].addEventListener("click",function () {
+switch(sel.value){
+    case "-" :inputs[2].value=parseInt(inputs[0].value)-parseInt(inputs[1].value) ;break;
+    case "+" :inputs[2].value=parseInt(inputs[0].value)+parseInt(inputs[1].value) ;break;
+    case "*" :inputs[2].value=parseInt(inputs[0].value)*parseInt(inputs[1].value) ;break;
+    case "/" :inputs[2].value=parseInt(inputs[0].value)/parseInt(inputs[1].value) ;break;
+}
+})
+</script>

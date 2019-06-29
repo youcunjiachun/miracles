@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" v-if="flag" v-bind:title="msg">
+    {{msg}}
+    <button v-on:click="isShow">点击</button>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            msg:"Hello World",
+            flag:true
+        },
+        methods:{
+            isShow(){
+                this.flag=!this.flag
+            }
+        }
+    })
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 200px;
+            height: 200px;
+            background-color: #F00;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #demo2{
+            width: 200px;
+            height: 200px;
+            background-color: #0f0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">123</div>
+<div id="demo2">12314144</div>
+</body>
+</html>
+<script>
+    function Demo(obj) {
+        this.obj = document.getElementById(obj);
+        this.x = 0;
+        this.y = 0;
+        this.nx = 0;
+        this.ny = 0;
+        this.obj.onmousedown = function (ev) {
+            this.press(ev);
+        }.bind(this);
+        document.onmouseup=function () {
+            this.up()
+        }.bind(this)
+    }
+
+    Demo.prototype.press = function (ev) {
+        var ev = ev || window.event;
+        this.nx = ev.clientX - this.obj.offsetLeft;
+        this.ny = ev.clientY - this.obj.offsetTop;
+        document.onmousemove = function (ev2) {
+            this.move(ev2)
+        }.bind(this);
+        if(this.obj.setCapture){
+            this.obj.setCapture()
+        }
+        return false
+    };
+    Demo.prototype.move = function (ev2) {
+        var ev2 = ev2 || window.event;
+        this.x = ev2.clientX;
+        this.y = ev2.clientY;
+        this.obj.style.top = (this.y - this.ny) + "px";
+        this.obj.style.left = (this.x - this.nx) + "px";
+        // console.log(this)
+    };
+    Demo.prototype.up=function () {
+        document.onmousemove=null;
+        if(this.obj.setCapture){
+            this.obj.releaseCapture();
+        }
+    };
+    new Demo("demo");
+    function Demo2(obj) {
+        Demo.call(this,obj)
+    }
+    Demo2.prototype=new Demo("demo2");
+    Demo2.prototype.move = function (ev2) {
+        var ev2 = ev2 || window.event;
+        this.x = ev2.clientX;
+        this.y = ev2.clientY;
+        this.tops=this.y - this.ny;
+        this.lefts=this.x - this.nx;
+        if(this.lefts<0){this.lefts=0}
+        if(this.tops<0){this.tops=0}
+        // console.log(ev2.clientWidth);
+        this.chay=document.documentElement.clientHeight-this.obj.offsetHeight;
+        this.chax=document.documentElement.clientWidth-this.obj.offsetWidth;
+        if(this.tops>this.chay){this.tops=this.chay}
+        if(this.lefts>this.chax){this.lefts=this.chax}
+        this.obj.style.top = this.tops + "px";
+        this.obj.style.left = this.lefts + "px";
+        // console.log(this)
+    }
+    new Demo2("demo2")
+
+
+</script>

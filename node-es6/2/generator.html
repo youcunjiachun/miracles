@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function *generator() {
+        console.log(1);
+        console.log(2);
+        yield "123";
+        yield"345";
+        console.log(3)
+    }
+    var fn=generator();
+    console.log(fn.next());
+    console.log(fn.next())
+</script>

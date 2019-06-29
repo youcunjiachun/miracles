@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // var obj={};var val=null;
+    // Object.defineProperty(obj,"name",{
+    //     get:function () {
+    //         console.log("执行了get操作");
+    //         return val
+    //     },
+    //     set:function (newVal) {
+    //         console.log("执行了set操作");
+    //         val=newVal
+    //     }
+    // });
+    // obj.name=1;
+    // console.log(obj.name)
+    function same() {
+        var value=null;
+        var Same=[];
+        Object.defineProperty(this,"num",{
+            get:function () {
+                console.log("执行了get操作");
+                return value
+            },
+            set:function (value) {
+                console.log("执行了set操作");
+                value=value;
+                Same.push({val:value})
+            }
+        });
+        this.getsame=function () {
+            return Same
+        }
+    }
+</script>

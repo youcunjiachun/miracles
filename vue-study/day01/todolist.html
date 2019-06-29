@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.enter="jia($event)">
+    <ul>
+        <li v-for="item in search">
+            {{item.name}}=============={{item.age}}
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            keywords:"",
+            list:[
+                {name:"rcl",age:21},
+                {name:"rcl",age:21},
+                {name:"rcl",age:21},
+                {name:"rcl",age:21},
+                {name:"rcl",age:21},
+                {name:"rcl",age:21},
+                {name:"xjp",age:12},
+                {name:"xjp",age:12},
+                {name:"xjp",age:12},
+                {name:"xjp",age:12},
+                {name:"xjp",age:12},
+                {name:"xjp",age:12},
+            ]
+        },
+        methods:{
+            jia(e){
+                this.keywords=e.target.value
+            }
+        },
+        computed:{
+            search(){
+                return this.list.filter(function (value) {
+                    return value.name.indexOf(this.keywords)!=-1
+                }.bind(this))
+            }
+        }
+    })
+</script>

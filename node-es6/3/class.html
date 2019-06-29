@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    class computer{
+        constructor(pinpai,color){
+            this.color=color;
+            this.pinpai=pinpai
+        }
+        input(){
+            console.log("输入")
+        }
+    }
+    class lenove extends computer{
+        constructor(pinpai,color,size){
+            super(pinpai,color);
+            this.size=size
+        }
+        input(){
+            console.log("我是子类的input")
+        }
+    }
+</script>

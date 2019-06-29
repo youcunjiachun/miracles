@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    class Car{
+        constructor(color,brand){
+                this.color=color;
+                this.brand=brand
+        }
+        driver(){
+            console.log(`${this.color}${this.brand}driver`)
+        }
+    }
+    class Bmw extends Car{
+        constructor(size,color,brand){
+            super(color,brand);
+            this.size=size
+        }
+        driver(){
+            console.log("......")
+        }
+    }
+    var mycar=new Car("red","benz");
+    mycar.driver();
+    // var person=(function () {
+    //     var val=1;
+    //     return {
+    //         getval(){
+    //             console.log(val)
+    //         },
+    //         setval(newval){
+    //             val=newval
+    //         }
+    //     }
+    // })();
+    // person.setval(123);
+    // person.getval()
+</script>

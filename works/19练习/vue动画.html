@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/vue.js"></script>
+    <style>
+        /*.v-enter,*/
+        /*.v-leave-to{*/
+            /*opacity: 0;*/
+            /*transform: translateX(80px);*/
+        /*}*/
+        /*.v-enter-active,*/
+        /*.v-leave-active{*/
+            /*transition: all 0.4s ease;*/
+        /*}*/
+        /*.my-enter,*/
+        /*.my-leave-to{*/
+            /*opacity: 0;*/
+            /*transform: translateY(80px);*/
+        /*}*/
+        /*.my-enter-active,*/
+        /*.my-leave-active{*/
+            /*transition: all 0.4s ease;*/
+        /*}*/
+        #demo1{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <button @click="flag=!flag">点击</button>
+    <transition
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @after-enter="afterEnter">
+        <div id="demo1" v-show="flag"></div>
+    </transition>
+    <!--<button @click="flag=!flag">动</button>-->
+    <!--<transition enter-active-class="animated fadeIn" leave-active-class="animated jello" >-->
+        <!--<h3 v-if="flag">这是一个标题</h3>-->
+    <!--</transition>-->
+
+    <!--<button @click="flag2=!flag2">动2</button>-->
+    <!--<transition name="my" enter-active-class="animated bounce"-->
+                <!--leave-active-class="animated bounce"-->
+                <!--:duration="{enter:400,leave:900}"-->
+    <!--&gt;-->
+        <!--<h3 v-if="flag2">这是一个标题</h3>-->
+    <!--</transition>-->
+
+</div>
+</body>
+</html>
+<script>
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            flag:true
+        },
+        methods:{
+            beforeEnter:function (el) {
+                el.style.transform="translate(0,0)"
+    },
+            enter:function (el,done) {
+                el.offsetWidth;
+                el.style.transform="translate(100px,200px)";
+                el.style.transition="all 1s ease";
+                done()
+            },
+            afterEnter:function (el) {
+                console.log("finish");
+                this.flag=!this.flag
+            }
+        }
+    })
+</script>

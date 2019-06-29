@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+</body>
+</html>
+<script>
+    let canvas=document.getElementsByTagName("canvas")[0].getContext("2d");
+    let pic=canvas.canvas;
+    function Ball(pic,canvas,x,y,r) {
+        this.x=x||20;
+        this.y=y||20;
+        this.r=r||10;
+        this.flag1=true;
+        this.flag2=true;
+        this.width=pic.width;
+        this.height=pic.height;
+
+
+        setInterval(function () {
+            this.refresh(canvas);
+            if(this.flag1){
+                this.x+=10;
+                if(this.x+this.r>=this.width){
+                    this.flag1=!this.flag1
+                }
+            } else{
+                this.x-=10;
+                if(this.x<=this.r){
+                    this.flag1=!this.flag1
+                }
+            }
+
+
+
+            if(this.flag2){
+                this.y+=8;
+                if(this.y+this.r>=this.height){
+                    this.flag2=!this.flag2
+                }
+            } else{
+                this.y-=8;
+                if(this.y<=this.r){
+                    this.flag2=!this.flag2
+                }
+            }
+                }.bind(this),16.6)
+    }
+
+    Ball.prototype.refresh=function (canvas) {
+        canvas.clearRect(0,0,this.width,this.height);
+        canvas.beginPath();
+        canvas.arc(this.x,this.y,this.r,0,Math.PI*2);
+        canvas.fill();
+    };
+
+    new Ball(pic,canvas);
+</script>

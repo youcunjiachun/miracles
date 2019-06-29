@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <input v-model="id" type="text">
+        <input v-model="name" type="text">
+        <button @click="add">添加</button>
+        <p v-for="item in list" :key="item.id" >
+            <input type="checkbox">
+            id是{{item.id}}名字是{{item.name}}</p>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            id:"",
+            name:"",
+            list:[
+                {name:"李斯",id:1},
+                {name:"嬴政",id:2},
+                {name:"赵高",id:3},
+                {name:"韩非",id:4},
+                {name:"荀子",id:5}
+            ]
+        },
+        methods:{
+            add(){
+                this.list.unshift({name:this.name,id:this.id})
+            }
+        }
+    })
+
+</script>

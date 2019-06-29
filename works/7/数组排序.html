@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2,4,3,5,4,7,5];
+    // function sort(arr) {
+    //     for(var i=0;i<arr.length;i++){
+    //         for(var j=0;j<arr.length;j++){
+    //             current=arr[j];
+    //             if(arr[j]>arr[j+1]){
+    //                 arr[j]=arr[j+1];
+    //                 arr[j+1]=current;
+    //             }
+    //         }
+    //     }
+    //     return arr
+    // }
+    function csort(arr) {
+        for(var i=0;i<arr.length;i++){
+            for(var j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    var current=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=current;
+                }
+            }
+        }
+        return arr
+
+    }
+    console.log(csort(arr))
+</script>

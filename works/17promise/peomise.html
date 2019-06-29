@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function myPromise(fn) {
+        var that=this;
+        that.state="pending";
+        that.value=null;
+        that.rejectedCallbacks=[];
+        that.resolvedCallbacks=[];
+        function rejected(value) {
+            if(that.value=="pending"){
+                that.value="rejectd";
+                that.value=value;
+                that.rejectedCallbacks.map(cb=>{
+                    cb(that.value)
+                })
+            }
+        };
+        function resolved(value) {
+            if(that.state=="pending"){
+                that.value="resolved"
+            }
+            that.value=value;
+            that.resolvedCallbacks.map(cb=>{
+                cb(that.value)
+            })
+        }
+        fn(resolved,rejected)
+    }
+    myPromise.prototype.then=function (on,re) {
+        var that=this;
+        if(that.state=="pending"){
+            that.resolvedCallbacks.push(on);
+            that.rejectedCallbacks.push(re);
+        }
+        if(that.state=="resolved"){
+            on(that.value)
+        }
+        if(that.state=="rejected"){
+            re(that.value)
+        }
+    };
+    // new myPromise(function (resolved,rejected) {
+    //     setInterval(function () {
+    //         var num=Math.random()*10;
+    //         if(num>5){
+    //             console.log("执行完成");
+    //             resolved("我是成功")
+    //         }else{
+    //             console.log("执行失败");
+    //             rejected("我是失败")
+    //         }
+    //
+    //     },1000)
+    // }).then(function (data) {
+    //     console.log(data)
+    // },function (data) {
+    //     console.log(data)
+    // })
+    // let p = new Promise((resolve, reject) => {
+    //     //做一些异步操作
+    //     setTimeout(() => {
+    //     console.log('执行完成');
+    //     resolve('我是成功！！');
+    // }, 2000);
+    // });
+    // console.log(p)
+       new myPromise(function(resolved, rejectd){
+        resolved("success");
+    }).then(function(data){
+        console.log(data);
+        console.log("123")
+    });
+    // console.log("which one is called first ?");
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function F1() {
+    }
+    F1.prototype.init1=function () {
+        console.log("f1")
+    };
+    function F2() {
+    }
+    F2.prototype.init2=function () {
+        console.log("f2")
+    };
+    var new1=new F1();
+    var new2=new F2();
+    new2.init2()
+
+</script>

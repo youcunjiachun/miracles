@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 400px;
+            margin: 0 auto
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></br>
+    <p><input type="checkbox" @click="allof(flag)">全选</p>
+    <p v-if="!isShow[0]"><input type="checkbox" value="1" v-model="checked">诸葛亮1 单价:18888 <button @click="change(1)" > + </button>{{nums[0]}}<button @click="change(-1)"> -- </button>总价:{{new_nums[0]}} <button @click="hide(1)">删除</button></br></p>
+    <p v-if="!isShow[1]"><input type="checkbox" value="2" v-model="checked">诸葛亮2 单价:01888 <button @click="change(2)" > + </button>{{nums[1]}}<button @click="change(-2)"> -- </button>总价:{{new_nums[1]}} <button @click="hide(2)">删除</button></br></p>
+    <p v-if="!isShow[2]"><input type="checkbox" value="3" v-model="checked">诸葛亮3 单价:00188 <button @click="change(3)" > + </button>{{nums[2]}}<button @click="change(-3)"> -- </button>总价:{{new_nums[2]}} <button @click="hide(3)">删除</button></br></p>
+    <p v-if="!isShow[3]"><input type="checkbox" value="4" v-model="checked">诸葛亮4 单价:00018 <button @click="change(4)" > + </button>{{nums[3]}}<button @click="change(-4)"> -- </button>总价:{{new_nums[3]}} <button @click="hide(4)">删除</button></br></p>
+    <p>总价格为{{all}}</p>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            flag:true,
+            isShow:[0,0,0,0],
+            checked:[],
+            nums:[0,0,0,0],
+            price:[18888,1888,188,18],
+            nima:[]
+        },
+        computed:{
+            new_nums(){
+                return this.nums.map((v,i)=>v*this.price[i])
+            },
+            all(){
+                if(this.checked.length!=0){
+                    this.nima=[];
+                this.checked.forEach((v,i)=>this.nima[i]=this.new_nums[v-1]);
+                return this.nima.reduce((a,b)=>a+b)
+                }
+            }
+        },
+        methods:{
+            change(n){
+                if(this.nums[Math.abs(n)-1]<=0&&n<0)return;
+                n>0?this.nums.splice(n-1,1,this.nums[n-1]+1):this.nums.splice(Math.abs(n)-1,1,this.nums[Math.abs(n)-1]-1);
+            },
+            hide(n){
+                this.isShow.splice(n-1,1,1);
+                this.nums.splice(n-1,1,0);
+            },
+            allof(flag){
+                if(flag){this.checked=["1","2","3","4"];
+                this.flag=!this.flag}
+                else{
+                    this.checked=[];
+                    this.flag=!this.flag
+                }
+            }
+        }
+    })
+    let arr=[1,2,3,4];
+    console.log(arr.slice(0,2),arr)
+</script>

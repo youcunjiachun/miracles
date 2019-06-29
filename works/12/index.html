@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<p><input type="text"><span></span>用户名必须以字母开头，必须字母和数字的组合</p>
+<p><input type="text"><span></span>必须字母和数字的组合5-10位</p>
+<p><input type="text"><span></span></p>
+<p><input type="text"><span></span></p>
+<input type="submit">
+</body>
+</html>
+<script>
+    var inputs=document.getElementsByTagName("input");
+    var spans=document.getElementsByTagName("span");
+    var name=/^[a-zA-Z]+.+/;
+    var password=/([a-zA-Z]+[0-9]+|[0-9]+[;a-zA-Z]+)/;//先用js判断长度在调用这个正则；
+    var tel=/^1[3|4|5|6]\d{9}$/;
+    var email=/[a-zA-Z0-9]+[@][a-zA-Z0-9]+\.[a-zA-Z]+([.][a-zA-Z]+)?/;
+    var pass=/^([a-zA-Z]+[0-9]+|[0-9]+[;a-zA-Z]+){5,10}$/;
+    var str="ahfyfnrcl@outlook.com";
+    console.log(email.test(str));
+    ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)
+</script>

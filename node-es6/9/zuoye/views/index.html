@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+    <style>
+        .main{
+            padding-top: 200px;
+        }
+        .form-control{
+            width: 40%
+        }
+        .right_account,.right_password{
+            display: none;
+        }
+        .login_successful{
+            text-align: center;
+        }
+        #wrap{
+            width: 1140px;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container main ">
+    <div id="wrap">
+    <div class="alert alert-success login_successful" role="alert">
+        <a href="#" class="alert-link">登录成功,即将跳转到主页...</a>
+    </div>
+    </div>
+    <form class="form-horizontal" action="http://localhost:8082/put" method="post" >
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+                <input type="text" name="account" class="form-control" id="inputEmail3" placeholder="账号">
+                <!--<span class="right_account">账号输入错误</span>-->
+                <span class="label label-danger right_account">账号输入错误</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="密码">
+                <!--<span class="right_password">密码输入错误</span>-->
+                <span class="label label-danger right_password">密码输入错误</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 记住我
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">注册</button>
+                <a  class="btn btn-default" id="user_login">登录</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
+<script src="../jquery.js"></script>
+<script>
+    $("#user_login").on("click",function () {
+        console.log($("#inputEmail3")[0].value)
+    });
+    $.ajax({
+        url:"/show",
+        method:"get",
+        success:function (data) {
+            console.log(data);
+            $("#user_login").on("click",function () {
+                console.log();
+                var flag1=true;
+                var flag2=true;
+                $.each(data,function (index,val) {
+                    if(val.account==$("#inputEmail3")[0].value){
+                        flag1=false
+                    }
+                    if(val.password==$("#inputPassword3")[0].value){
+                        flag2=false
+                    }
+                });
+                if(flag1){
+                    $("span").eq(0).show()
+                }
+                if(flag2){
+                    $("span").eq(1).show()
+                }
+                if(!flag1&&!flag2){
+                    $("#wrap").animate({"height":52})
+                }
+            });
+            $("input").on("focus",function () {
+                if($(this).val()){
+                    console.log($(this).index());
+                    $(this).val("");
+                    $("span").eq($("input").index(this)).hide();
+                }
+            })
+        }
+
+    });
+    $(".login_successful").on("click",function () {
+        $("#wrap").animate({"height":0})
+    });
+    $("a").click(function () {
+        $.ajax({
+            url:"/check",
+            method:"post",
+            dataType:"json",
+            data:{account:$("#inputEmail3").val(),password:$("#inputPassword3").val()},
+            success:function (d) {
+                console.log(d)
+            }
+        })
+    })
+</script>

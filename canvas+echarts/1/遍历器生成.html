@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let arr1={name:"rcl",age:12};
+    Object.prototype[Symbol.iterator]=function () {
+        let a=0;
+        let _this=this;
+        let item=Object.keys(this);
+        return {
+            next(){
+                return {value:_this[item[a++]],done:a>item.length}
+            }
+        }
+    };
+    // let way=iterator(arr);
+    // let  flag=true;
+    // while(flag){
+    //     let result=way.next();
+    //     console.log(result);
+    //     if(result.done)flag=!flag
+    // }
+    console.log(...arr1)
+</script>

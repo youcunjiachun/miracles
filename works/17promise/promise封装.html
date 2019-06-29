@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function myPromise(fn) {
+        var that=this;
+        that.state="pending";
+        that.value=null;
+        that.rejectedCallbacks=[];
+        that.resolvedCallbacks=[];
+        function rejected(value) {
+            if(that.state=="pending"){
+                that.state="rejected"
+            }
+            that.value=value;
+            that.rejectedCallbacks.map(cb=>{
+                cb(that.value)
+            })
+        }
+        function resolved(value) {
+            if(that.value=="pending"){
+                that.value="resolved"
+            };
+            that.state="resolved";
+            that.resolvedCallbacks.map(cb=>{
+                cb(that.value)
+            })
+        }
+        fn(resolved,rejected)
+    };
+    myPromise.prototype.then=function (on,re) {
+        var that=this;
+        if(that.value=="resolved"){
+            on(that.value)
+        };
+        if(that.value=="rejected"){
+            re(that.value)
+        };
+        if(that.state=="pending"){
+            that.rejectedCallbacks.push(re);
+            that.resolvedCallbacks.push(on)
+        }
+    };
+    var p = new myPromise(function(resolve, reject){
+        resolve("success");
+    });
+    console.log(p)
+
+    // p.then(function(value){
+    //     console.log(value);
+    // });
+
+    // console.log("which one is called first ?");
+
+</script>

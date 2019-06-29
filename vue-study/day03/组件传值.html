@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+
+        },
+        components:{
+            parent:{
+                methods:{
+                    send(d){
+                        console.log(d)
+                    }
+                },
+                data(){return{
+                    msg:"adsas"
+                }},
+                template:`<div>这是父组件<child :msg="msg" @func="send"></child></div>`,
+                components:{
+                    child:{
+                        template:`<div>这是子{{msg}}组件<button @click="send">发送</button></div>`,
+                        data(){
+                            return{}
+                        },
+                        props:["msg"],
+                        methods:{
+                            send(){
+                                this.$emit("func","1221221");
+                                console.log(this)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>

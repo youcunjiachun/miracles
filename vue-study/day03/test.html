@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // function New(){
+    //     let obj={};
+    //     let func=Array.prototype.shift.call(arguments);
+    //     obj.__proto=func.prototype;
+    //     let result= func.apply(obj,arguments);
+    //     return result instanceof Object?result :obj
+    // }
+    // new 的实现原理
+
+
+    // 函数柯里化
+
+
+    //异步加载js脚本
+    // 有defer和async，
+    // defer会等待页面渲染结束之后执行；
+    // 而async会等到等到下载完成后立即执行，中断渲染
+    // defer脚本会按照顺序进行加载，
+    // async不能保证加载顺序
+    // 动态创建script标签
+    // let script=document.createElement("script")
+    // script.src="url";
+    // document.body.append(script)
+
+
+    //原型链继承
+    // 通过new 父构造函数来实现继承，
+    // 缺点是无法在影响所有实例的情况下给夫构造类型传参
+    // 父构造函数的引用类型会被所有实例共享
+    // function Father(name,age){
+    //     this.name=name;
+    //     this.age=age
+    // }
+    // function Son(){
+
+    // }
+    // Son.prototype=new Father("rcl",21);
+    // var first=new Son();
+    // var second=new Son();
+    // console.log(first,second)
+    //借用构造函数继承
+    //缺点，无法继承原型上的方法
+    // function Father(name, age) {
+    //     this.name = name;
+    //     this.age = age
+    // }
+    // Father.prototype.hi = function () {
+    //     console.log("hi")
+    // }
+    // function Son(name, age) {
+    //     Father.call(this, name, age)
+    // }
+    // let first = new Son("rcl1", 21);
+    // let second = new Son("rcl2", 99);
+    // console.log(first, second);
+    // first.hi()
+
+    //组合继承
+//     function Father(name,age){
+//         this.name=name;
+//         this.age=age
+//     }
+//     Father.prototype.hi=function(){
+//         console.log("hi")
+//     };
+//     function Son(name,age){
+//         Father.call(this,name,age)
+//     }
+//     Son.prototype=new Father();
+//    let first = new Son("rcl1", 21);
+//     let second = new Son("rcl2", 99);
+//     console.log(first,second);
+//     first.hi()
+
+
+//寄生组合继承
+// function Father(name,age){
+//         this.name=name;
+//         this.age=age
+//     }
+//     Father.prototype.hi=function(){
+//         console.log("hi")
+//     };
+//     function Son(name,age){
+//         Father.call(this,name,age)
+//     }
+//     Son.prototype=Object.create(Father.prototype)
+//    let first = new Son("rcl1", 21);
+//     let second = new Son("rcl2", 99);
+//     console.log(first,second);
+//     first.hi()
+
+
+//从页面上隐藏一个元素
+//display:none
+//<div hidden></div>
+//
+</script>

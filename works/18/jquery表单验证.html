@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span.aa{
+            background-color: #f00;
+        }
+        span.success{
+            background-color: #0f0;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <p>用户名<input type="text" name="user"></p>
+    <!--<p>密码<input type="password" name="password"></p>-->
+    <!--<p>电话<input type="tel" name="tel"></p>-->
+    <!--<p>邮箱<input type="text" name="email"></p>-->
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/messages_zh.min.js"></script>
+<script>
+    $.validator.addMethod("user",function (value,element,pram) {
+        return /^1[34678][0-9]{9}$/.test(value)
+    },"傻逼");
+    $("form").validate({
+        rules:{
+            user:{
+                user:true
+            }
+        },
+        messages:{
+            user:{
+                required:"请输入文字！！！"
+            }
+        },
+        errorClass:"aa",
+        errorElement:"span",
+        success:function (val) {
+            $(val).text("成功").addClass("success")
+        },
+        showErrors:function (d1,d2) {
+            console.log(d2);
+            $(d2).each(function (index,obj) {
+                $(obj.element).next().removeClass("success").addClass("aa")
+            });
+            this.defaultShowErrors()
+        }
+    })
+</script>

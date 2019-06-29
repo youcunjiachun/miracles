@@ -1,0 +1,57 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+<!--<script>-->
+    <!--function Sum(x) {-->
+        <!--if(x==0){-->
+            <!--return 0-->
+        <!--}-->
+        <!--return x+Sum(x-1)-->
+    <!--}-->
+    <!--console.log(Sum(100))-->
+<!--</script>-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+var obj1={
+    name:"rcl",
+    age:21,
+    hi:function () {
+        alert("hi")
+    },
+    dog:{
+        name:"da",
+        age:10
+    }
+};
+var obj2={};
+function extend(a,b) {
+   for(key in a) {
+       b[key]=a[key]
+   }
+}
+extend(obj1,obj2);
+obj1.dog.name=30;
+console.log(obj1);
+console.log(obj2);
+
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function myPromise(fn) {
+        let that=this;
+        that.state="pending";
+        that.value=null;
+        that.resolvedCallbacks=[];
+        that.rejectedCallbacks=[];
+        function resolved(value) {
+            if(that.state=="pending"){
+                that.state="resolved";
+                that.value=value;
+                that.resolvedCallbacks.map(cb=>cb(that.value))
+            }
+        }
+        function rejected(value) {
+            if(that.state=="pending"){
+                that.state="rejected";
+                that.value=value;
+                that.rejectedCallbacks.map(cb=>cb(that.value))
+            }
+        }
+        fn(resolved,rejected)
+    }
+    myPromise.prototype.then=function (on,out) {
+        let that=this;
+        if(that.state=="pending"){
+            that.resolvedCallbacks.push(on);
+            that.resolvedCallbacks.push(out)
+        }
+        if(that.state=="rejected"){
+            out(that.value)
+        }
+        if(that.state=="resolved"){
+            on(that.value)
+        }
+    }
+    new myPromise(function (resolved,rejected) {
+        // resolved("123")
+        rejected("234")
+    }).then(function (val) {
+        console.log(val)
+    },function (val) {
+        console.log(val)
+    });
+    console.log("我是同步任务")
+</script>

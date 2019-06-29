@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 30px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo=document.getElementById("demo");
+    function animate(obj,json) {
+        for(var key in json){
+            (function (key) {
+                obj.key=setInterval(function () {
+                    // var flag=true;
+                    if(key=="opacity"){
+                        var current=window.getComputedStyle(obj)[key]*100
+                    }
+                    else{
+                        var current=parseInt(window.getComputedStyle(obj)[key])
+                    }
+                    var step=(json[key]-current)/20;
+                    step>0?step=Math.ceil(step):step=Math.floor(step);
+                    if(key=="opacity"){
+                        obj.style.opacity=(current+step)/100;
+                    }else{
+                        obj.style[key]=current+step+"px";
+                    }
+                    if(current!=json[key]){
+                        flag=false
+                    }
+                    if(flag){
+                        clearInterval(obj.key)
+                    }
+                },100)
+            })(key)
+
+        }
+    };
+    demo.onclick=function () {
+        animate(this,{"width":900,"height":100,"opacity":0})
+    }
+</script>

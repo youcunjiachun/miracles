@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var d1=new Date();
+    var d2=new Date("2019-5-1 00:00:00");
+    var target=(d2-d1)/1000;
+    var s=parseInt(target%60);//取余60得到秒钟
+    var m=parseInt(target/60%60);//除60得到所有分钟，在区域60得到当前分钟
+    var h=parseInt(target/60/60%24);//同上得到时钟
+    var d=parseInt(target/60/60/24);//得到天数
+</script>

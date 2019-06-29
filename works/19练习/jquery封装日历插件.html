@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            width: 400px;
+            margin: 200px auto 0
+        }
+        #demo .top{
+            width: 400px;
+            line-height: 40px;
+            background-color: skyblue;
+            display: flex;
+            justify-content: space-between;
+        }
+        #demo .top span{
+            cursor: pointer;
+        }
+        table{
+            width: 400px;
+            border-collapse: collapse;
+        }
+        table th,td{
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+        th:nth-child(1){
+            color:#f00
+        }
+        th:nth-child(7){
+            color:#f00
+        }
+    </style>
+    <script src="../../../Users/戎成林/Desktop/jquery.date.js"></script>
+</head>
+<body>
+<div id="demo">
+    <div class="top"><span class="prev">上一月</span><span class="now">2019年5月</span><span class="next">下一月</span></div>
+</div>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    $.fn.extend({
+        date:function () {
+            var date=new Date();
+            var y=date.getFullYear();//当前年份
+            var m=date.getMonth()+1;//当前月份
+          function get() {
+              var str=`    <table>
+        <tr>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+            <th>周六</th>
+            <th>周日</th>
+        </tr>`
+              var d=new Date(y,m,0).getDate();//获取本月有多少天
+              var week=new Date(y,m-1,0).getDay()+1;//获取本月第一天是周几
+              console.log(week);
+              if(week==7){week=0};
+              for(var j=0;j<6;j++){
+                  str+="<tr>";
+                  for(var i=0;i<7;i++){
+                      str+="<td></td>";
+                  }
+                  str+="</tr>"
+              }
+              str+="</table>";
+              $("#demo").append($(str));
+              $("td").each(function (index,value) {
+                  if(index>=week&&index<=d+week-1){
+                      $(this).text(index-week+1)
+                  };
+                  if(!$("tr").last().children()[0].innerText){
+                      $("tr").last().hide()
+                  }else{
+                      $("tr").last().show()
+                  }
+              });
+
+          }
+          get();
+            $(".prev").on("click",function () {
+                $("table").remove();
+                m--;
+                if(m<=0){
+                    m=12;
+                    y--
+                }
+                $(".now").html(y+"年"+m+"月");
+                get()
+            });
+            $(".next").on("click",function () {
+                $("table").remove();
+                m++;
+                if(m>=13){
+                    m=1;
+                    y++
+                }
+                $(".now").html(y+"年"+m+"月");
+                get()
+            })
+
+        }
+    });
+    $("#demo").date()
+</script>

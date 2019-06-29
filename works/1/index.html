@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            border: 10px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<p>宽:<input type="text"></p>
+<p>高:<input type="text"></p>
+<p>背景:<input type="text"></p>
+<p>边框颜色:<input type="text"></p>
+<p><input type="button" value="确定"></p>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var inputs=document.getElementsByTagName("input");
+    var box=document.getElementById("box");
+    inputs[4].addEventListener("click",function () {
+        box.style.width=inputs[0].value+"px";
+        box.style.height=inputs[1].value+"px";
+        box.style.backgroundColor=inputs[2].value;
+        box.style.borderColor=inputs[3].value;
+        for(var i=0;i<inputs.length-1;i++){
+            inputs[i].value=""
+        }
+    })
+</script>

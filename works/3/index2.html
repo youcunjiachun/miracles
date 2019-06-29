@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>a</button>
+<button>b</button>
+<button>c</button>
+<button>d</button>
+</body>
+</html>
+<script>
+    var btns=document.getElementsByTagName("button");
+    var arr=["a","b","c","d"];
+    for(var i=0;i<btns.length;i++){
+        (function (j) {
+            var k=j+1;
+            btns[j].onclick=function(){
+                if(k>3){
+                    k=0
+                }
+                this.innerText=arr[k];
+                k++;
+            }
+        })(i)
+
+    }
+</script>

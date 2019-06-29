@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo1{
+            width: 500px;
+            height: 500px;
+            background-color: #f00;
+            position: relative;
+        }
+        #demo2{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #0f0;
+            margin: auto
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo1">
+    <div id="demo2"></div>
+</div>
+</body>
+</html>
+<script>
+    var demo1=document.getElementById("demo1");
+    var demo2=document.getElementById("demo2");
+    // demo1.onclick=function (ev) {
+    //     console.log(ev)
+    // }
+    demo1.addEventListener("click",function (ev) {
+        console.log(ev)
+    },true)
+</script>

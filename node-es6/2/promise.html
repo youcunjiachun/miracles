@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var p=new Promise(resolved=>{
+        resolved("成功")
+    }).then(function (val) {
+        console.log(val)
+    })
+    console.log(p)
+</script>

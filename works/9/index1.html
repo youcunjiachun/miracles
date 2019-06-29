@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width: 100%;
+        }
+        li{
+            width: 100%;
+            height: 100px;
+            margin-bottom: 50px;
+            background-color: #f00;
+        }
+        .green{
+            background-color: green;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li class="green"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    var green=document.getElementsByClassName("green")[0];
+    var current=green.offsetTop;
+    window.onscroll=function () {
+        var scroll=document.documentElement||document.body;
+        if(scroll.scrollTop>current){
+            green.style.position="fixed"
+        }else{
+            green.style.position="static"
+        }
+    }
+</script>

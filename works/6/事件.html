@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    p{
+        font-size: 100px;
+    }
+</style>
+<body>
+<p id="p"></p>
+</body>
+</html>
+<script>
+    var p=document.getElementById("p");
+    function addZero(x) {
+        if(x<10){
+            return x="0"+x
+        }
+        return x
+    }
+    function Dx(x) {
+        switch (x){
+            case 1:return "一";break;
+            case 2:return "二";break;
+            case 3:return "三";break;
+            case 4:return "四";break;
+            case 5:return "五";break;
+            case 6:return "六";break;
+            case 0:return "日";break;
+        }
+
+    }
+    fn();
+    setInterval(fn,1000);
+    function fn() {
+        var data=new Date();
+        var y=data.getFullYear();
+        console.log(y);
+        var m=data.getMonth()+1;
+        console.log(m);
+        var d=data.getDate();
+        console.log(d);
+        var x=data.getDay();
+        console.log(x);
+        var h=data.getHours();
+        console.log(h);
+        var min=data.getMinutes();
+        console.log(min);
+        var s=data.getSeconds();
+        console.log(s);
+        p.innerHTML=y+"年"+addZero(m)+"月"+d+"日"+h+":"+min+":"+s+"星期"+Dx(x)
+    }
+
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <li>1</li>
+    <li>2</li>
+    <div>div1</div>
+    <li>3</li>
+    <li>4</li>
+    <div>div2</div>
+    <li>5</li>
+</body>
+</html>
+<script src="../lib/jquery.js"></script>
+<script>
+    $("li").on("click",function () {
+        alert($(this).index());
+    });
+</script>

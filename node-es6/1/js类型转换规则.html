@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //强制类型转换:Number,String toString(),parseInt(),parseFloat(),Boolean();
+    //隐式转换:逻辑运算符(&&.||.!)运算符(+-*/)关系运算符(>.<.<=.>=)相等运算符(==)或者if/while;
+    // console.log(Number(true));//1
+    // console.log(Number(false));//0
+    // console.log(Number(null));//0
+    // console.log(Number(undefined));//NaN
+    // console.log(Number("如果字符串中包含非数字"));//NaN
+    // console.log(Number("123"));//123
+    // console.log(Number(""));//0
+    // console.log(Number([]));//0
+    //  console.log(Number([1]));//1 数字中一个会显示数组中的数值
+    //  console.log(Number([1,2]));//数组中多个数值表示NaN
+    // console.log(Number({}));//NaN   空对象转换后为NaN
+    // console.log(Number({name:"rcl"}))//NaN
+    // console.log([1,2,3,"rcl"].toString())
+    // console.log(String(null));//null
+    // console.log(null.toString());//报错，因为调用的是方法，null没有方法
+    // console.log(undefined.toString())//同上
+    //Boolean
+    console.log([1, 2, 3, undefined, 5, 6] + 10);//1,2,3,,5,610
+
+
+</script>

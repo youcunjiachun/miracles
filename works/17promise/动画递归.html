@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo div{
+            width: 50px;
+            height: 700px;
+            background-color: #ccc;
+            float: left;
+            margin-left: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    $("#demo div").eq(0).slideDown(dg);
+    function dg() {
+        $(this).next("div").slideDown(dg)
+    }
+</script>

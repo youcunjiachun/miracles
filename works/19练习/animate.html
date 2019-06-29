@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #demo{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<button>前</button>
+<button>后</button>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo=document.getElementById("demo");
+    var btns=document.getElementsByTagName("button");
+         function animate (obj,json,fn) {
+             clearInterval(obj.timer);
+        obj.timer=setInterval(function () {
+            var flag=true;
+            for(var key in json){
+            if(key=="opacity"){
+                var current=parseInt(getStyle(obj,key)*100)
+            }else{
+                var current=parseInt(getStyle(obj,key));
+            }
+            var step=(json[key]-current)/10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            current+=step;
+            if(key=="opacity"){
+                obj.style.opacity=current/100
+            }else{
+                obj.style[key]=current+"px";
+            }
+            if(json[key]!=current){
+                flag=false
+            }
+            }
+            if(flag){
+                clearInterval(obj.timer);
+                fn&&fn()
+            }
+        },16.6)
+    };
+         btns[0].onclick=function () {
+             animate(demo,{"width":300,"height":300,"opacity":50},function () {
+                 animate(demo,{"top":600},function () {
+                     animate(demo,{"left":600},function () {
+                         animate(demo,{"top":0},function () {
+                             animate(demo,{"left":0,"width":200,"height":200,"opacity":100})
+                         })
+                     })
+                 })
+             })
+         };
+
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr]
+        }else{
+            return window.getComputedStyle(obj,null)[attr]
+        }
+    }
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        #u1{
+            width: 400px;
+            position: relative;
+            height: 400px;
+            margin: 0 auto
+        }
+        #u1>li{
+            width: 400px;
+            line-height: 400px;
+            position: absolute;
+            background-color: #f00;
+            text-align: center;
+        }
+        #u1 .frist{
+            z-index: 999
+        }
+        #u2{
+            position: absolute;
+            bottom: 0;
+            z-index: 1000
+        }
+        #u2 li{
+            width: 80px;
+            line-height: 40px;
+            background-color: #0F0;
+            float: left;
+            text-align: center;
+        }
+        #u1 .two{
+            background-color: #00f;
+        }
+        #u1 .three{
+            background-color: #0ff;
+        }
+        #u1 .four{
+            background-color: #ff0;
+        }
+        #u1 .five{
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul id="u1">
+    <li class="frist">1</li>
+    <li class="two">2</li>
+    <li class="three">3</li>
+    <li class="four">4</li>
+    <li class="five">5</li>
+    <ul id="u2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</ul>
+
+</body>
+</html>
+<script>
+    var u2=document.getElementById("u2");
+    var u1=document.getElementById("u1");
+    var u2lis=u2.getElementsByTagName("li");
+    var u1lis=u1.children;
+    console.log(u1lis,u2lis);
+    for(var i=0;i<u2lis.length;i++){
+        (function (k) {
+            u2lis[k].onmouseenter=function () {
+                for(var j=0;j<u2lis.length;j++){
+                    animate(u1lis[j],{"opacity":0});
+                    animate(u2lis[j],{"opacity":100});
+                }
+                animate(u1lis[k],{"opacity":100});
+                animate(u2lis[k],{"opacity":70});
+                console.log(k)
+            }
+        })(i)
+
+    }
+    function animate(obj,json) {
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function () {
+            var flag=true;
+            for(var key in json){
+                if(key=="opacity"){
+                    var current=window.getComputedStyle(obj)[key]*100
+                }
+                else{
+                    var current=parseInt(window.getComputedStyle(obj)[key])
+                }
+                var step=(json[key]-current)/10;
+                step>0?step=Math.ceil(step):step=Math.floor(step);
+                if(key=="opacity"){
+                    obj.style.opacity=(current+step)/100;
+                }else{
+                    obj.style[key]=current+step+"px";
+                }
+                if(current!=json[key]){
+                    flag=false
+                }
+            }
+            if(flag){
+                clearInterval(obj.timer)
+            }
+        },16.6);
+    };
+</script>

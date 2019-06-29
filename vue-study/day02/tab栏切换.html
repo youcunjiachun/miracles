@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        #app{
+            width: 400px;
+            margin: 0 auto
+        }
+        ul li{
+            float: left;
+            width: 100px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #fff;
+        }
+        #app div{
+            line-height: 350px;
+            text-align: center;
+            font-size: 50px;
+            background-color:RGBA(0,0,255,0.5);
+        }
+        .hide{
+            display: none;
+        }
+        .choosed{
+            background-color:RGBA(0,0,255,0.5);
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in lists"  @click="add(index+1)" :class="{choosed:page==index+1?true:false}" >{{item.title}}</li>
+    </ul>
+    <div v-for="(item,index) in lists" :class="{hide:page==index+1?false:true}">{{item.content}}</div>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            page:1,
+            lists:[
+                {title:"可乐1",content:"cocacola1"},
+                {title:"可乐2",content:"cocacola2"},
+                {title:"可乐3",content:"cocacola3"},
+                {title:"可乐4",content:"cocacola4"},
+            ]
+        },
+        methods:{
+            add(d){
+                this.page=d;
+            }
+
+        }
+
+    })
+</script>

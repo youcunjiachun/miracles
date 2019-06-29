@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dv{
+            width: 200px;
+            height: 20px;
+        }
+         #dv.ruo{
+            width: 50px;
+            height: 20px;
+            background-color: #f00;
+        }
+         #dv.zhong{
+            width: 100px;
+            height: 20px;
+            background-color: #0F0;
+        }
+        #dv.qiang{
+            width: 200px;
+            height: 20px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<p>密码 <input autofocus id="input" type="text"></p>
+<p>你的密码强度是<div id="dv" ></div></p>
+</body>
+</html>
+<script>
+    var input=document.getElementsByTagName("input")[0];
+    var div=document.getElementById("dv");
+    input.onkeyup=function () {
+        var sun=panduan(input.value);
+        console.log(sun);
+        if(sun==1){
+            div.className="ruo";
+            div.innerText="弱"
+        }
+        else if(sun==2){
+            div.className="zhong";
+            div.innerText="中"
+        }
+        else if(sun==3){
+            div.className="qiang";
+            div.innerText="强"
+        }
+    };
+    function panduan(value) {
+        var sum=0;
+        if(/[0-9]/.test(value)){
+            sum++;
+        }
+        if(/[a-zA-Z]/.test(value)){
+            sum++;
+            console.log("aaa")
+        }
+        if(/[^0-9a-zA-Z._]/.test(value)){
+            sum++
+        }
+        return sum
+    }
+</script>

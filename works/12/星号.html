@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str="北京，上海，哈尔滨，乌鲁木齐";
+    var ss=str.replace(/上海|哈尔滨/g,function (val) {
+        var s="";
+        for(var i=0;i<val.length;i++){
+            s+="*"
+        }
+        return s
+    })
+    console.log(ss)
+</script>

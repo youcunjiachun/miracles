@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        function sendRequest(urls) {
+            return new Promise(function(resolved, rejected) {
+                $.getJSON(urls, function(d) {
+                    // console.log(d)
+                    resolved(d)
+                })
+            })
+
+        }
+
+        async function getStory(url, flg) {
+            let obj = await sendRequest(url)
+            if (flg == 1) { //读取故事列表
+                let stArr = obj.showapi_res_body.pagebean.contentlist
+                let contents = ''
+                for (let i = 0; i < stArr.length; i++) {
+                    contents += "<li><a href='javascript:;' onclick='getStory(\"http://route.showapi.com/955-2?showapi_appid=94448&showapi_sign=2ea15c4989844abe8b42c646b36a9594&id=" + stArr[i].link + "&page=1\",2)'>" + stArr[i].title + "</a></li>"
+                }
+
+                $("#div1 ul").append(contents)
+            } else if (flg == 2) { //读取故事内容
+                alert(obj.showapi_res_body.text)
+            }
+
+
+        }
+
+        getStory('http://route.showapi.com/955-1?showapi_appid=94448&showapi_sign=2ea15c4989844abe8b42c646b36a9594&type=yc&page=1', 1)
+    </script>
+</head>
+
+<body>
+<div id='div1'>
+    <ul></ul>
+</div>
+</body>
+
+</html>

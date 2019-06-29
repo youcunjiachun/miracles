@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            width: 300px;
+            background-color: #F00;
+        }
+        .inner{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul class="wrap">
+    <li class="click">一
+        <ul class="inner">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </li>
+    <li class="click">二
+        <ul class="inner">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </li>
+    <li class="click">三
+        <ul class="inner">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
+<script>
+    var inners=document.getElementsByClassName("inner");
+    var clicks=document.getElementsByClassName("click");
+    for(var i=0;i<clicks.length;i++){
+         inners[i].flag=true;
+        (function (j) {
+            clicks[j].onclick=function(){
+                if(inners[j].flag){
+                    inners[j].style.display="block" ;
+                    inners[j].flag=false
+
+                }else{
+                    inners[j].style.display="none";
+                    inners[j].flag=true
+                }
+            }
+        })(i)
+
+    }
+
+</script>

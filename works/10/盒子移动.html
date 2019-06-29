@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            width: 20px;
+            height: 20px;
+            background-color: #f00;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+
+</div>
+</body>
+</html>
+<script>
+    var demo=document.getElementById("demo");
+    var timer=null;
+    var aim=null;
+    document.onkeydown=function (ev) {
+        clearInterval(timer);
+        var ev=ev||window.event;
+        switch(ev.keyCode){
+            case 37:aim="left";break;
+            case 38:aim="top";break;
+            case 39:aim="right";break;
+            case 40:aim="bottom";break;
+        };
+        function move() {
+            switch(aim){
+                case "left":demo.style.left=(demo.offsetLeft-10)+"px";break;
+                case "top":demo.style.top=(demo.offsetTop-10)+"px";break;
+                case "right":demo.style.left=(demo.offsetLeft+10)+"px";break;
+                case "bottom":demo.style.top=(demo.offsetTop+10)+"px";break;
+            }
+        }
+        timer=setInterval(move,16.6)
+    };
+
+</script>

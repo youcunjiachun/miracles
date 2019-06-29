@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.数组去重
+    // let arr=[1,2,3,3,3,3,4,4,4,4,4,];
+    // console.log([...new Set(arr)])//利用set数据结构进行去重
+    // function sort(arr) {
+    //     let newarr=[];
+    //     arr.forEach(function (value,index) {
+    //         if(newarr.indexOf(value)==-1){
+    //             newarr.push(value)
+    //         }
+    //     });
+    //     return newarr
+    // }
+    // console.log(sort(arr))
+
+
+
+
+
+    //2.数组合并
+    // let arr1=[1,2,3];
+    // let arr2=[4,5,6];
+    //[...arr1,...arr2]//利用展开运算符进行合并
+    //arr1.concat(arr2)//concat方法合并
+
+    //3.获取数组最大最小值
+    // let arr=[1,2,3,4,5,6,7,42323];
+    // console.log(Math.max.apply(null,arr));
+    // console.log(Math.min.apply(null,arr))
+
+
+
+
+    //4.获取数组交集
+    // let arr1=[1,2,3,4,5];
+    // let arr2=[4,5,6,7,8];
+    // function find(arr1,arr2) {
+    //     let newarr=[];
+    //     arr1.forEach(function (value,index) {
+    //         if(arr2.indexOf(value)!=-1){
+    //             newarr.push(value)
+    //         }
+    //     })
+    //     return newarr
+    // };
+    // console.log(find(arr1,arr2))
+
+
+
+
+
+
+
+
+
+
+    //5.数组扁平化
+    // let arr=[1,2,3,[4,5,6],7,[1,[12,2121,2,1,[12,1,21],1],22,12],8,9];
+    // //es6方法 arr.flat(Infinity)
+    //
+    // function bp(arr) {
+    //     let newarr=[];
+    //     arr.forEach(function (value,index) {
+    //         if(Array.isArray(arr[index])){
+    //             newarr=newarr.concat(bp(arr[index]))
+    //         }else{
+    //             newarr.push(value)
+    //         }
+    //     });
+    //     return newarr
+    // }
+    // console.log(bp(arr))
+
+
+
+    //6.数组乱序
+    // let arr=[1,2,3,4,5,6,7];
+    // function luan(arr) {
+    //     return arr.sort(function (a,b) {
+    //         return Math.random()-0.5
+    //     })
+    // }
+
+
+
+
+
+
+
+
+
+
+    //对象
+    // let a={name:"rcl",age:21};
+    // let b={};
+    // Object.assign(b,a);
+    // console.log(b)
+    //Object.assign原本是吧源对象属性拷贝到目标属性的，这里可以用作浅复制
+
+
+
+
+    //拷贝对象
+    //1.浅拷贝
+    let obj={
+        name:"rcl",
+        age:21,
+        arr:[1,23,4,4,5]
+    };
+
+
+    // function shallowcopy(obj) {
+    //     let newobj={};
+    //     for(let key in obj){
+    //         newobj[key]=obj[key]
+    //     }
+    //     return newobj
+    // }
+    // console.log(shallowcopy(obj))
+    //
+
+    //深拷贝
+    // function deepcopy(obj) {
+    //     let newobj={};
+    //     for(let key in obj){
+    //         newobj[key]= obj[key] instanceof Object?deepcopy(obj[key]):obj[key]
+    //     }
+    //     return newobj
+    // }
+    // console.log(deepcopy(obj))
+
+
+
+    //判断对象是否为空
+    // obj={name:"rcl"};
+    // if(JSON.stringify(obj)==="{}"){
+    //     console.log("空")
+    // }
+
+
+//字符串方法
+    let str="qweqwreqewqew";
+    let exp=/^q$/g;
+    console.log(exp.exec(str));
+    console.log(str.match(exp))
+
+</script>

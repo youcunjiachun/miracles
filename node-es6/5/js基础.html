@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 1.利用object.prototype.toString.apply()来检测数据类型
+    // console.log(Object.prototype.toString.apply({}))
+
+
+
+
+    // 2.实现map方法
+    // var arr=[1,2,3];
+    // Array.prototype.mymap=function(fn,context) {
+    //     let newarr=[];
+    //     for(let i=0;i<this.length;i++){
+    //         newarr.push(fn.call(context,arr[i],i,this))
+    //     }
+    //     return newarr
+    // };
+    // var a=arr.mymap(function (value) {
+    //      return value*2
+    // });
+    // console.log(a)
+
+
+
+
+
+    //3.实现fliter方法
+    // var arr=[1,2,3,4,5,6];
+    // Array.prototype.myfilter=function (fn,context) {
+    //     let newarr=[];
+    //     for(let i=0;i<this.length;i++){
+    //         fn.call(context,arr[i],i,this)&&newarr.push(arr[i])
+    //     }
+    //     return newarr
+    // }
+    // console.log(arr.myfilter(function (value) {
+    //     return value>3
+    //
+    // }))
+
+
+
+    // 4.实现class语法糖
+    // function myclass(subtype,supertype) {
+    //     subtype.prototype=Object.create(super.prototype,{
+    //         constructor:{
+    //             enumerable:false,
+    //             configure:true,
+    //             writable:true,
+    //             value:subtype.constructor
+    //         }
+    //     });
+    //     Object.setPrototypeOf()
+    // }
+
+    // 5,函数柯里化
+//     function sum(x,y) {
+//         return x+y
+//     }
+// function curry(fn) {
+//     if(fn.length<=1)return fn;
+//     var generator=(...args)=>{
+//         if(fn.length==args.length){
+//             return fn(...args)
+//         }else{
+//             return(...args2)=>{
+//                return  generator(...args,...args2)
+//             }
+//         }
+//     }
+//     return generator
+// }
+// var curryadd=curry(sum);
+//     console.log(curryadd(1)(2))
+//     6.斐波那契数列
+//     function feibo(n) {
+//         if(n==1||n==2){
+//             return 1
+//         }
+//         return feibo(n-1)+feibo(n-2)
+//     }
+//     var memory=function (fn) {
+//         let obj={}
+//         return function (n) {
+//             if(obj[n]===undefined)obj[n]=fn(n)
+//             return obj[n]
+//         }
+//     }
+// //     7.深拷贝和浅拷贝
+//     var obj={
+//         name:"wh",
+//         age:23,
+//         arr:[1,2,3]
+//     };
+//     // function shallowcopy(obj) {
+//     //     var newobj={}
+//     //     for(var key in obj){
+//     //         newobj[key]=obj[key]
+//     //     }
+//     //     return newobj
+//     // }
+//     // console.log(shallowcopy(obj))
+//     function deepcopy(obj) {
+//         var newobj={}
+//         for(var key in obj){
+//             newobj[key]=obj[key] instanceof Object?deepcopy(obj[key]):obj[key]
+//         }
+//         return newobj
+//     }
+//     var newobj=deepcopy(obj);
+//     obj.arr[1]="123";
+//     console.log(newobj);
+//     console.log(obj)
+//     8.instanceof的实现
+//     function myinstance(current,type) {
+//         var cp=current.__proto__;
+//         var tp=type.prototype;
+//         var flag=true;
+//         while(flag){
+//             if(cp===null||cp==undefined){
+//                 return false
+//             }
+//             if(cp==tp){
+//                 return true;
+//                 flag=false
+//             }
+//             cp=cp.__proto__
+//         }
+//     }
+//     console.log(myinstance(,Object));
+//     function myInstanceof(left, right) {
+//         let prototype = right.prototype
+//         left = left.__proto__
+//         while (true) {
+//             if (left === null || left === undefined)
+//                 return false
+//             if (prototype === left)
+//                 return true
+//             left = left.__proto__
+//         }
+//     }
+//     console.log(myInstanceof(123,Object))
+//     const StartScore = rate => "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate);
+//     const start = StartScore(0);
+//     console.log(start)
+//     对象私有变量
+    var own=(function () {
+           var a=3;
+           return {
+               get(){
+                   return a
+           }
+           }
+       })()
+       console.log(own.get())
+</script>

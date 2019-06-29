@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>变量和类型
+
+
+    JavaScript规定了几种数据类型
+    7种，根据堆栈储存方式的不同分为简单类型和复杂类型
+
+    简单类型:string、number、boolean、null、undefined
+    复杂类型:object、symbol(ES6新增，表示独一无二的值)
+
+
+
+    JavaScript对象的底层结构是什么
+    不甚了解，不敢妄言
+
+
+    Symbol类型在实际开发中的应用，手写Symbol
+    Symbol表示一个独一无二的值，如果我们使用了一个他人提供的对象，要为此对象添加方法，那么必须保证属性名不能冲突，使用Symbol就能很好的保证这一点，Symbol与任何值都不相等！这个东西了解不深，传送门-ES6标准入门-Symobl
+
+
+    JavaScript中的变量具体储存形式
+    变量的储存方式取决于变量的类型是基本类型还是引用类型
+
+    作者：前端李会旺
+    链接：https://juejin.im/post/5cc59cd1f265da039b08784d
+    来源：掘金
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<div></div>
+</body>
+</html>
+<script>
+    var p=document.getElementsByTagName("p")[0];
+    var div=document.getElementsByTagName("div")[0];
+    var str=p.innerHTML;
+    var sum=0;
+    setInterval(
+        function () {
+            sum++;
+            p.innerHTML=str.slice(sum);
+            div.innerHTML=str.substr(0,sum)
+        },100
+    )
+</script>

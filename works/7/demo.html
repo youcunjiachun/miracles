@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        table th{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <input v-model="n1" type="text" placeholder="id">
+    <input v-model="n2" type="text" placeholder="车名">
+    <button @click="add">添加</button>
+    <input v-model="keywords" type="text" placeholder="搜索">
+<table>
+        <tr v-for="item in search(keywords)" :key="item.id">
+            <th >{{item.id}}</th>
+            <th >{{item.name}}</th>
+            <th >{{item.timer}}</th>
+            <th><a @click.prevent="del(item.id)" href="">删除</a></th>
+        </tr>
+</table>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            keywords:"",
+            n1:"",
+            n2:"",
+            lists:[
+                {id:1,name:"五菱宏光",timer:new Date()},
+                {id:2,name:"AE八六",timer:new Date()}
+            ]
+        },
+        methods:{
+            add:function(){
+                this.lists.push({id:this.n1,name:this.n2,timer:new Date()})
+            },
+            del:function (id) {
+                this.lists.some((value,i) => {
+                    if(value.id==id){
+                        this.lists.splice(i,1);
+                        return true
+                    }
+                })
+            },
+            search:function (keywords) {
+                var newlist=[];
+                this.lists.forEach(function (value) {
+                    if(value.name.indexOf(keywords)!=-1){
+                        newlist.push(value)
+                    }
+                })
+                return newlist
+
+            }
+        }
+    })
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="flag">v-if</p>
+    <p v-show="flag">v-show</p>
+    <button @click="change">显示/隐藏</button>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm =new Vue({
+        el:"#app",
+        data:{
+            msg:"123",
+            flag:true
+        },
+        methods:{
+            change(){
+                this.flag=!this.flag
+            }
+        }
+    })
+</script>
