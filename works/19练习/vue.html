@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div v-cloak id="demo">
+{{msg}}
+</div>
+</body>
+</html>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script>
+    // var vm=new Vue({
+    //     el:"#demo",
+    //         data:{
+    //         msg:"123"
+    //     },
+    //     methods:{
+    //
+    //     }
+    // })
+    // var arr={};
+    // console.log(Array.isArray(arr))
+    function cb(val) {
+        console.log("试图更新啦")
+    };
+    // ++++++++++++++++++++++++++
+    function defineReactive(obj,key,val) {
+        Object.defineProperty(obj,key,{
+            enumerable:true,
+                configurable:true,
+                get:function reactiveFetter() {
+                return val
+            },
+            set:function reactiveSetter(newVal) {
+                if(newVal===val)return;
+                cb(newVal)
+            }
+        });
+    }
+    function observer(value) {
+        if(!value||(typeof value!=="object")){
+            return
+        }
+        Object.keys(value).forEach((key)=>{
+            defineReactive(value,key,value[key])
+        })
+    }
+    // ++++++++++++++++++++++++
+    class Vue{
+        constructor(options){
+            this._data=options.data;
+            observer(this._data)
+        }
+    }
+    let o=new Vue({
+        data:{
+            test:"i am test"
+        }
+    });
+    o._data.test="i1 am test"
+</script>

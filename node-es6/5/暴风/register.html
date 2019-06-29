@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="./static/css/public.css"/>
+    <link rel="stylesheet" href="./static/css/baofeng.css"/>
+</head>
+<body>
+<!--
+332*446
+-->
+
+<div class="user_container user_regsiter">
+
+    <div class="user_hd">账号注册</div>
+    <p id="message"></p>
+    <div class="user_item user_tel">
+        <em>&nbsp;</em>
+        <input type="text" placeholder="请输入手机号" id="input_tel">
+    </div>
+    <div class="user_item user_password">
+        <em>&nbsp;</em>
+        <input type="text" placeholder="输入密码" id="input_password">
+        <span class="default" id="passwordTips"></span>
+    </div>
+    <div class="user_item user_vertify" id="userVertify">
+        <em>&nbsp;</em>
+        <input type="text" placeholder="输入右侧验证码">
+        <span>
+           <!-- <i style="color:red; transform: rotate(30deg);">a</i><i style="color:blue; transform: rotate(100deg);">b</i><i style="color:skyblue; transform: rotate(60deg);">c</i><i style="color:yellowgreen; transform: rotate(20deg);">d</i> <b>蒙板</b>-->
+
+        </span>
+        <button class="create_code">生成验证</button>
+    </div>
+    <div class="user_item user_tel_code">
+        <em>&nbsp;</em>
+        <input type="text" placeholder="输入短信验证码">
+        <button class="get_message">免费获取短信</button>
+    </div>
+    <div class="user_xy">
+        <a href="" class="fr">立即登录&gt;</a>
+        <!--
+            ischecked:
+                0未选中
+                1选中
+        -->
+        <span class="is_agreen"><i class="no-checked" ischecked="0" id="isAgreen">isAgreen</i>我同意 <a href="">查看协议</a></span>
+    </div>
+    <div class="user_confirm">
+        <button type="submit">注册</button>
+    </div>
+    <div class="user_question">
+        <a href="">遇到问题</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+!function () {
+    var oMessage = document.getElementById('message');//错误消息容器
+    //检查手机号是否正确
+    var inputTel = document.getElementById('input_tel') //电话框
+    var inputPassword = document.getElementById('input_password') //密码框
+    var passwordTips = document.getElementById('passwordTips') //密码状态
+
+    var userVertify = document.getElementById('userVertify')//验证码容器
+    var inputVertify = userVertify.getElementsByTagName('input')[0]
+    var spanVertify = userVertify.getElementsByTagName('span')[0]
+    var buttonVertify = userVertify.getElementsByTagName('button')[0]
+
+    var isAgreen = document.getElementById('isAgreen')//同意协议按钮
+
+    var code = ''//临时存储验证码
+    /*          手机格式判断*/
+    inputTel.onblur = function(){
+        //console.log( this )
+        var telValue = this.value
+
+        var reg = /^1[3-9]\d{9}$/
+
+        // 错误优先原则 设计方式
+        if( !reg.test( telValue ) ){
+            //console.log( '手机号不正确' )
+            oMessage.innerHTML = '手机号格式不正确'
+            return
+        }
+        oMessage.innerHTML = ''
+    }
+
+    /*密码判断*/
+    inputPassword.onblur = function(){
+//            console.log( this )
+        var passwordValue = this.value
+
+        var reg = /^[a-zA-Z0-9]{6,32}$/
+        //请输入6-32位英文、数字和符号的组合密码
+        // 错误优先原则 设计方式
+        if( !reg.test( passwordValue ) ){
+            //console.log( '手机号不正确' )
+            oMessage.innerHTML = '请输入6，32位的密码'
+            return
+        }
+
+        /*
+         *  6-10  弱
+         *  11-20 中
+         *  21-32 强
+         * */
+        var len = passwordValue.length
+        if( len >= 6 && len <= 10 ){
+            passwordTips.className = 'no-strong'
+        }else if( len >= 11 && len <= 20 ){
+            passwordTips.className = 'middle'
+        }
+
+        oMessage.innerHTML = ''
+    }
+
+    //生成验证码
+    buttonVertify.onclick = function(){
+        //var rotate =  Math.round( Math.random()*360 )
+        spanVertify.innerHTML = createVertify()
+    }
+    //判断验证码是否正确
+    inputVertify.onblur = function(){
+//            console.log( this.value )
+        if( this.value != code ){
+            oMessage.innerHTML = '验证错误'
+            return
+        }
+        oMessage.innerHTML = ''
+        //  console.log( this.value , code )
+    }
+
+    /*同意协议*/
+    isAgreen.onclick = function() {
+        //console.log( this.getAttribute('ischecked') )
+        var ischecked = this.getAttribute('ischecked')//数据变量存储化
+        if (ischecked == '0') {
+            this.className = 'checked'
+            this.setAttribute('ischecked','1')
+        } else if (ischecked == '1'){
+            this.className = 'no-checked'
+            this.setAttribute('ischecked','0')
+        }
+
+    }
+
+    spanVertify.innerHTML = createVertify()//上来就生成一个验证码
+
+    function createVertify(){
+        var s = 'abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789'
+        var arr = s.split('')
+        arr.sort( function () {
+            return Math.random() - 0.5
+        } )
+        var result = arr.slice(0,4)
+        code = result.join('')
+        //console.log(code);
+        var str = '<i style="color:rgb('+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+'); transform: rotate('+  Math.round( Math.random()*90 ) +'deg);">'+ result[0] +'</i><i style="color:rgb('+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+'); transform: rotate('+  Math.round( Math.random()*90 ) +'deg);">'+ result[1] +'</i><i style="color:rgb('+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+'); transform: rotate('+  Math.round( Math.random()*90 ) +'deg);">'+ result[2] +'</i><i style="color:rgb('+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+','+Math.round( Math.random()*255 )+'); transform: rotate('+  Math.round( Math.random()*90 ) +'deg);">'+ result[3] +'</i> <b>蒙板</b>'
+//        spanVertify.innerHTML = str
+        return str
+    }
+}()
+
+</script>
+
+</body>
+</html>

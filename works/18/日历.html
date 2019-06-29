@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[];
+    function getDataArray(start,end) {
+        var startDate=new Date(start).getDate();
+        var endDate=new Date(end).getDate();
+        console.log(startDate,endDate);
+        while(startDate<=endDate){
+            arr.push(startDate);
+            startDate=startDate+1
+        }
+    }
+    getDataArray("2019-5-1","2019-5-1");
+    console.log(arr);
+</script>

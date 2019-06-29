@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<style>
+    #div1{
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #div1 div{
+        width: 300px;
+        height: 300px;
+        background-color: #f00;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        display: none;
+    }
+</style>
+<body>
+<div1 id="div1">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div style="display: block">1</div>
+    <div>2</div>
+    <div>3</div>
+</div1>
+</body>
+</html>
+<script>
+    var div1=document.getElementById("div1");
+    function Tab(obj) {
+        this.btns=obj.getElementsByTagName("button");
+        this.divs=obj.getElementsByTagName("div");
+        var _this=this;
+        for(var i=0;i<this.btns.length;i++){
+            this.btns[i].index=i;
+            this.btns[i].onclick=function () {
+                _this.change(this)
+            }
+        }
+    }
+    Tab.prototype.change=function (This) {
+        for(var i=0;i<this.btns.length;i++){
+            this.divs[i].style.display="none"
+        }
+        this.divs[This.index].style.display="block"
+    };
+    new Tab(div1)
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button>右移</button>
+<button>左移</button>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    var btn=document.getElementsByTagName("button");
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr]
+        }else{
+            return window.getComputedStyle(obj,null)[attr]
+        }
+    }
+    function animate(box,btn,mubiao,attr) {
+        btn.onclick=function () {
+            clearInterval(box.timer);
+            box.timer=setInterval(function () {
+                var current=parseInt(getStyle(box,attr));
+                var chazhi=mubiao-current;
+                var step=(mubiao-current)/10;
+                 step=chazhi>0?Math.ceil(step):Math.floor(step);
+                var target=current+step;
+                if(target==mubiao){
+                    clearInterval(box.timer);
+                }
+                box.style.left=target+"px";
+                console.log(box.style[attr])
+            },16.6)
+        }
+    }
+    animate(box,btn[1],0,"left");
+    animate(box,btn[0],500,"left");
+</script>

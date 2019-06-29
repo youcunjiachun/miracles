@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .gray{
+            background-color: #666;
+        }
+        #demo{
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+            line-height: 400px;
+            text-align: center;
+            font-size: 300px;
+            overflow: hidden;
+        }
+        #demo div{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 400px;
+        }
+        span{
+            width: 40px;
+            line-height: 40px;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 99999;
+            background-color: purple;
+        }
+        i{
+            width: 40px;
+            line-height: 40px;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            z-index: 99999;
+            font-style: normal;
+            background-color: #048003;
+        }
+        p{
+            position: absolute;
+            height: 10px;
+            bottom: 10px;
+            right: 10px;
+            z-index: 99999;
+        }
+        em{
+            width: 10px;
+            height: 10px;
+            border-radius:50%;
+            float: left;
+            background-color: #fff;
+            margin-left: 9px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <span>左</span>
+    <i>右</i>
+    <p>
+        <em class="gray"></em><em></em><em></em><em></em>
+    </p>
+<div style="background-color: red;left: 0;">1</div>
+<div style="background-color: blue">2</div>
+<div style="background-color: green">3</div>
+<div style="background-color: yellow">4</div>
+</div>
+</body>
+</html>
+<script>
+    function animate (obj,json,fn) {
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function () {
+            var flag=true;
+            for(var key in json){
+                if(key=="opacity"){
+                    var current=parseInt(getStyle(obj,key)*100)
+                }else{
+                    var current=parseInt(getStyle(obj,key));
+                }
+                var step=(json[key]-current)/10;
+                step=step>0?Math.ceil(step):Math.floor(step);
+                current+=step;
+                if(key=="opacity"){
+                    obj.style.opacity=current/100
+                }else{
+                    obj.style[key]=current+"px";
+                }
+                if(json[key]!=current){
+                    flag=false
+                }
+            }
+            if(flag){
+                clearInterval(obj.timer);
+                fn&&fn()
+            }
+        },16.6)
+    };
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr]
+        }else{
+            return window.getComputedStyle(obj,null)[attr]
+        }
+    }
+</script>
+<script>
+    var demo=document.getElementById("demo");
+    var divs=demo.getElementsByTagName("div");
+    var prev=document.getElementsByTagName("span")[0];
+    var next=document.getElementsByTagName("i")[0];
+    var ems=document.getElementsByTagName("em");
+    var sum=0;
+    next.onclick=function () {
+        animate(divs[sum],{"left":-400});
+        sum++;
+        if(sum==ems.length){
+            sum=0
+        }
+        divs[sum].style.left="400px";
+        for(var i=0;i<ems.length;i++){
+            ems[i].className=""
+        }
+        ems[sum].className="gray";
+        animate(divs[sum],{"left":0})
+    };
+    prev.onclick=function () {
+        animate(divs[sum],{"left":400});
+        sum--;
+        if(sum<0){
+            sum=ems.length-1
+        }
+        for(var i=0;i<ems.length;i++){
+            ems[i].className=""
+        }
+        ems[sum].className="gray";
+        divs[sum].style.left="-400px";
+        animate(divs[sum],{"left":0})
+    }
+    for(var i=0;i<ems.length;i++){
+        (function (i) {
+            ems[i].onmouseover=function () {
+                if(i>sum){
+                animate(divs[sum],{"left":-400});
+                    divs[i].style.left="400px";
+                animate(divs[i],{"left":0});
+                    sum=i;
+                    for(var j=0;j<ems.length;j++){
+                        ems[j].className=""
+                    }
+                    ems[sum].className="gray";
+                }
+                if(i<sum){
+                    animate(divs[sum],{"left":400});
+                    divs[i].style.left="-400px";
+                    animate(divs[i],{"left":0});
+                    sum=i;
+                    for(var j=0;j<ems.length;j++){
+                        ems[j].className=""
+                    }
+                    ems[sum].className="gray";
+                }
+            }
+        })(i)
+    }
+
+</script>

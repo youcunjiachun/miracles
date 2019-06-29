@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2,3,3,3,3,34,[6,6,6],4,4,4,4];
+    function set(arr) {
+        var newArr=[];
+        arr.forEach(value=>{
+            if(newArr.indexOf(value)==-1){
+               newArr.push(value)
+        }
+        })
+        return newArr
+    };
+    console.log(set(arr))
+</script>

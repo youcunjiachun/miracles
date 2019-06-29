@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas width="500" height="500" style="border:1px solid #ccc;"></canvas>
+</body>
+</html>
+<script>
+    let cas=document.getElementsByTagName("canvas")[0].getContext("2d");
+    cas.fillRect(0,0,100,100);
+    cas.strokeRect(100,100,100,100);
+    cas.beginPath();
+    cas.rect(200,200,100,100);
+    cas.closePath();
+    cas.fill();
+    cas.beginPath();
+    cas.rect(300,300,100,100);
+    cas.closePath();
+    cas.stroke();
+    cas.fillStyle="red";
+    cas.beginPath();
+    cas.rect(400,400,100,100);
+    cas.closePath();
+    cas.fill()
+</script>

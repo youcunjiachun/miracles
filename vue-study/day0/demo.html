@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <input v-model="n1" type="text">
+    <select v-model="opt" name="" id="sel">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input v-model="n2" type="text">
+    <button @click="play">=</button>
+    <input v-model="result" type="text">
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            n1:1,
+            n2:2,
+            result:0,
+            opt:"+"
+        },
+        methods:{
+            play(){
+            switch(this.opt){
+                case "+":this.result=this.n1+this.n2;break;
+                case "-":this.result=this.n1-this.n2;break;
+                case "*":this.result=this.n1*this.n2;break;
+                case "/":this.result=this.n1/this.n2;break;
+            }
+        }
+        }
+    })
+</script>

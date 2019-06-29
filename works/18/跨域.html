@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+function jsonP(obj) {
+    var script=document.createElement("script");
+    var url=obj.url+"&callback="+obj.name;
+    script.src=url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+    // console.log(obj.name)
+};
+jsonP({
+    url:"https://p.3.cn/prices/mgets?skuIds=J_5089253&type=1",
+    name:"hello"
+});
+function hello(data) {
+    console.log(data)
+}
+
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // var obj={name:"rcl",age:21};
+    // function observe(data) {
+    //     if(!data||typeof data!="object"){
+    //         return
+    //     }
+    //     Object.keys(data).forEach(function (key) {
+    //         defineReactive(data,key,data[key])
+    //     })
+    // }
+    // function defineReactive(data,key,val) {
+    //     observe(val);
+    //     Object.defineProperty(data,key,{
+    //         enumerable:true,
+    //         configurable:false,
+    //         get:function () {
+    //             return val
+    //         },
+    //         set:function (newVal) {
+    //             console.log("监听到了数据变化");
+    //             val=newVal
+    //         }
+    //     })
+    // }
+    // observe(obj);
+    // console.log(obj.name="rcl1");
+
+    //数据变化监听
+    // function defineReactive(data,key,val) {
+    //     var dep=new Dep();
+    //
+    //
+    // }
+    function Dep() {
+        this.subs=[]
+    };
+    Dep.prototype={
+        addSub:function () {
+            this.subs.push(sub)
+        },
+        notify:function () {
+            this.subs.forEach(function (sub) {
+                sub.updata()
+            })
+        }
+    }
+
+</script>

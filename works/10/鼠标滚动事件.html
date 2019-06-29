@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        #demo {
+            width: 500px;
+            height: 500px;
+            background-color: #f00;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            margin-left: -250px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    // var h = 500;
+    // document.onmousewheel = function (ev) {
+    //     var ev = ev || window.event;
+    //     if (ev.wheelDelta > 0) {
+    //         h -= 10;
+    //         demo.style.height = h + "px";
+    //         demo.style.width = h + "px"
+    //     } else {
+    //         h += 10;
+    //         demo.style.height = h + "px";
+    //         demo.style.width = h + "px"
+    //
+    //     }
+    // }
+    document.onmousewheel=function (ev) {
+        var ev=ev||window.event;
+        console.log(ev.wheelDelta)
+    }
+</script>

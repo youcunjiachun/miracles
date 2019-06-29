@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function ajax(url) {
+        var p=new Promise(function (resolved,rejected) {
+            var xhr=new XMLHttpRequest();
+            xhr.open("get",url+"/news?id=3","json");
+            xhr.send();
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4&&xhr.status==200){
+                    resolved(JSON.parse(xhr.responseText))
+                }
+            }
+        });
+        return p
+    }
+    ajax("http://localhost:4000").then(function (value) {
+        return value
+    }).then(function ({id,title,content,commentsUrl}) {
+        // console.log(commentsUrl);
+        ajax("http://localhost:4000"+commentsUrl).then(function (value) {
+            console.log(value)
+        })
+    })
+</script>

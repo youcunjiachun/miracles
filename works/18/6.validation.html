@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span.aa{
+            background: url(images/unchecked.gif) no-repeat;
+            padding-left: 20px;
+        }
+        span.success{
+            background: url(images/checked.gif) no-repeat;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/messages_zh.min.js"></script>
+    <form action="">
+        <p>
+            姓名：<input type="text" name="username" >
+        </p>
+        <p>
+            密码：<input type="password" name="pass">
+        </p>
+        <p>
+            电话：<input type="text" name="tell">
+        </p>
+        <p>
+            邮箱：<input type="text" name="email">
+        </p>
+        <input type="submit">
+        <!-- <input type="button"> -->
+    </form>
+
+    <script>
+        $("form").validate({
+            rules:{
+                username:{
+                    required:true,
+                    minlength:4
+                },
+                pass:"required",
+                tell:{
+                    required:true,
+                    maxlength:5
+                },
+                email:{
+                    required:true,
+                    email:true
+                }
+            },
+            messages:{
+                username:{
+                    required:"这是必须填写的！！！！",
+                    minlength:"不能小于4个！！！！！"
+                }
+            },
+            errorClass:"aa", //指定出错时的类名
+            errorElement:"span", //指定包裹错误文字的标签
+            success:function(val){  //在标签验证通过是触发，val指向的是span标签
+                // console.log(val);
+                val.addClass("success");  //在表单验证通过时，添加success类名，将span中的背景变为正确
+            },
+            showErrors:function(d1,d2){  //表单验证没通过时触发 d2是一个数组，数组中包含所有验证出错的表单
+                // console.log(d1,d2);
+                //把背景图片改为错误的背景图片，改变类名
+
+                $.each(d2,function(index,obj){   //循环d2，找到验证的表单
+                    // console.log(obj.element)  obj.element指向验证的表单，是一个dom对象
+                    $(obj.element).next().removeClass("success").addClass("aa")
+                })12212121
+                this.defaultShowErrors(); //一定要调用，否则看不到提示文字
+            }
+
+        });
+    </script>
+</body>
+</html>

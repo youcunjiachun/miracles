@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 200px;
+            background-color: #f00;
+            position: absolute;
+            display: none;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>
+<script>
+    var ul=document.getElementsByTagName("ul")[0];
+    document.oncontextmenu=function (ev) {
+        var ev=ev||window.event;
+        var x=ev.clientX;
+        var y=ev.clientY;
+        ul.style.display="block";
+        ul.style.top=y+"px";
+        ul.style.left=x+"px";
+        return false
+    }
+</script>

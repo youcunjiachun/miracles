@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    function *generator(url) {
+        var val=yield ajax(url);
+        yield ajax(url+val);
+    }
+    function ajax(url) {
+        $.get(url,function (val) {
+            gen.next(val.commentsUrl);
+           console.log(val)
+        },"json")
+    };
+   var gen= generator("http://localhost:4000/news?id=3");
+   console.log(gen.next())//返回值为undefined;
+</script>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>暴风影音</title>
+    <link rel="stylesheet" href="./static/css/public.css"/>
+    <link rel="stylesheet" href="./static/css/baofeng.css"/>
+
+    <script src="./static/js/html5.js"></script>
+
+    <script type="text/javascript" src="./static/js/ujiuye.js"></script>
+    <!--
+        先绘制DOM树
+        浏览器去解析DOM树
+    -->
+
+</head>
+<body>
+<header class="main_header">
+
+    <!--
+        main_box: 共用的可视区的宽
+        header: 不一样的，最起码高度不一样
+    -->
+    <div class="header main_box">
+        <div class="fl header_logo">
+            <a href="" class="logo">
+                暴风影音 我是logo
+            </a>
+        </div>
+        <div class="fr mini_nav">
+            <a href="">登录</a>
+            <a href="">注册</a>
+            <a href="">开通VIP</a>
+            <a href="">个人中心</a>
+            <a href="">暴风首页</a>
+        </div>
+        <!--
+            header:65
+            假设：超链接的行高/高 25
+            65-25 = 40
+            mini_nav：padding-top:20
+        -->
+    </div>
+
+</header>
+<!--
+    header_over
+-->
+<!--
+命名规范：
+    在js中，经常用驼峰式命名 如：mainNav  userInfo
+-->
+<nav class="main_nav main_box" id="mainNav">
+    <p class="nav">
+        <a href="" class="home">首页</a>
+        <a href="">点播片库</a>
+        <a href="">激活码兑换</a>
+    </p>
+</nav>
+<!--
+导航over
+-->
+
+<div class="filmContainer clearfix" id="filmContainer">
+    <div class="film_list">
+        <div class="film_thumb">
+            <a href="">
+                <img src="./static/images/51_270_360.jpg" width="205" height="287" alt=""/>
+            </a>
+            <span class="vip_user bgGreen">VIP专享</span>
+            <span class="calri">标清</span>
+        </div>
+        <div class="film_desc">
+            <a href="">外乡人</a>
+            <p>上海外来人的心酸与甘甜</p>
+            <span class="score">9.1</span>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    /**
+     * Created by Administrator on 2019/4/10.
+     */
+
+    ajax('./data/listdata.json','get', function (data) {
+        var films = JSON.parse( data )
+        console.log( films )
+        console.log( typeof films )
+
+        var str = ''
+
+        var len = films.length
+
+        for( var i=0;i < len;i++ ){
+            var film = films[i]
+            if( (i+1)%5 == 0  ){
+                str +='<div class="film_list mr0">'
+            }else{
+                str +='<div class="film_list">'
+            }
+
+            str +='<div class="film_thumb">'
+            str +='<a href="'+ film.href +'">'
+            str +='<img src="'+ film.imgSrc +'" width="205" height="287" alt=""/>'
+            str +='</a>'
+
+            switch( film.pri ){
+                case '1':
+                    str +='<span class="vip_user bgGreen">VIP特权</span>'
+                    break;
+
+                case '2':
+                    str +='<span class="vip_user bgOrange"><del>5元</del>VIP免费</span>'
+                    break;
+            }
+
+            str +='<span class="calri">'+ film.calri +'</span>'
+            str +='</div>'
+            str +='<div class="film_desc">'
+            str +='<a href="'+ film.href +'">'+ film.name +'</a>'
+            str +='<p>'+ film.desc +'</p>'
+            str +='<span class="score">'+ film.score +'</span>'
+            str +='</div>'
+            str +='</div>'
+        }
+
+        var container = document.getElementById('filmContainer')
+        container.innerHTML = str;
+    })
+</script>
+
+</body>
+</html>

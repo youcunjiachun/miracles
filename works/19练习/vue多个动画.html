@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        width: 500px;
+        height: 30px;
+        border: 1px dashed #999;
+        margin: 5px;
+    }
+    li:hover{
+        background-color: #f00;
+        transition: all 1s ease;
+    }
+    .v-enter,
+    .v-leave-to{
+        opacity: 0;
+        transform:translateY(100px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+        transition:all 1s ease
+    }
+    .v-move{
+        transition: all 1s ease;
+    }
+    .v-leave-active{
+        position: absolute;
+    }
+</style>
+<body>
+<div id="demo">
+    <input type="text" v-model="id">
+    <input type="text" v-model="name">
+    <button @click="add">添加</button>
+    <!--<ul >-->
+        <transition-Group appear tag="ul">
+        <li v-for="(item,i) in lists" :key="item.id">{{item.id}}-----{{item.name }}<a href="#" @click.prevent="del(i)">删除</a></li>
+        </transition-Group>
+    <!--</ul>-->
+</div>
+
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            id:"",
+            name:"",
+            lists:[
+                {id:1,name:"rcl"},
+                {id:2,name:"rcl"},
+                {id:3,name:"rcl"}
+            ]
+        },
+        methods:{
+            add:function () {
+                this.lists.push({id:this.i,name:this.name});
+            },
+            del:function (i) {
+                this.lists.splice(i,1)
+    }
+        }
+    })
+</script>

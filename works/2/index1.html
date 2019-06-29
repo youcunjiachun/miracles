@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="txt" type="text" placeholder="请输入数字"><button id="btn">呵呵</button>
+</body>
+</html>
+<script>
+    var txt=document.getElementById("txt");
+    var btn=document.getElementById("btn");
+    btn.addEventListener("click",function () {
+        var val=txt.value;
+        if(isNaN(val)){
+            alert("输入数字");
+            return
+        }
+        if((parseFloat(val)+"").length!=val.length){
+            alert("前面不能有零");
+            return
+        }
+        if((parseInt(val))!=(parseFloat(val))){
+            alert("不能输入小数");
+            return
+        }
+        var valarr =val.split("");
+        if(valarr.length==0){
+            alert("请输入数字");
+            return
+        }
+        if(valarr.length<=5||valarr.length>=11){
+            alert("不符合规范")
+        }
+        var num=0;
+        for(var i=0;i<valarr.length;i++){
+            num=num+parseInt(valarr[i])
+        }
+        console.log(num)
+    })
+</script>

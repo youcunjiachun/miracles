@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 3000px;
+            overflow: scroll
+        }
+        #son{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="son"></div>
+</body>
+</html>
+<script>
+    var son=document.getElementById("son");
+    var he=son.offsetHeight;
+    window.onscroll=function () {
+        var top=document.documentElement||document.body;
+        var h=document.documentElement.clientHeight;
+        son.style.marginTop=top.scrollTop+(h/2-he)+"px";
+    }
+</script>

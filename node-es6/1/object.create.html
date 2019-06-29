@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function create(obj,pros) {
+        function F() {}
+        F.prototype=obj;
+        var o=new F();
+        if(props instanceof Object){
+            Object.defineProperties(o,props)
+        }
+        return o
+    }
+    function New(func) {
+        var obj={};
+        obj.__proto__=func.prototype;
+        var args=[...arguments].splice(1);
+        var back=func.apply(this,args);
+        return back instanceof Object?back:obj
+    }
+    New("123",1,1,1)
+</script>

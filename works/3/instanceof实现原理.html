@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2];
+    function instance_of(a,b) {
+        var bp=b.prototype;
+        var ap=a.__proto__;
+        while(true){
+            if(ap===null){
+                return false
+            }
+            if(bp===ap){
+                return true
+            }
+            ap=ap.__proto__
+        }
+    }
+    console.log(instance_of(arr,Function));
+    console.log(arr instanceof Function);
+    console.log(Array.isArray(arr));
+    console.log(Object.prototype.toString.apply(arr));
+    console.log(arr.constructor)
+</script>

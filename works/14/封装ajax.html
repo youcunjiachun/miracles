@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>
+<script>
+   function ajax(method,url,data,fn) {
+       var xhr=new XMLHttpRequest();
+       if(method=="get"){
+           if(data){
+               xhr.open(method,url+"?"+data,true); 
+           }else{
+               xhr.open(method,url,true);
+           }
+           xhr.send()
+       }else{
+           if(data){
+               xhr.open(method,url,true);
+               xhr.send(data)
+           }else{
+               xhr.open(method,url,true);
+               xhr.send()
+           }
+       }
+       xhr.onreadystatechange=function () { 
+           if(xhr.readyState==4&&xhr.status==200){
+               fn(xhr.responseText)
+           }
+       }
+   }
+   var divs=document.getElementsByTagName("div");
+   ajax("get","1.txt","",function (a) {
+       var arr=eval(a)[0];
+       for(var i=0;i<divs.length;i++){
+           divs[i].innerHTML=arr[Object.keys(arr)[i]]
+       }
+       
+   })
+   
+   
+</script>

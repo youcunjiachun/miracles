@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Me() {
+        this.name="rcl"
+    }
+    Me.prototype.say=function () {
+        alert("me")
+    }
+    function He() {
+    }
+    He.prototype=new Me();
+    var he=new He();
+    console.log(he.name);
+    console.log(he.constructor)
+</script>

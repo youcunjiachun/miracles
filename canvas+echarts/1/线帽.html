@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+</body>
+</html>
+<script>
+    var cas=document.getElementsByTagName("canvas")[0].getContext("2d");
+    cas.beginPath();
+    cas.moveTo(100,100);
+    cas.lineTo(100,200);
+    cas.lineWidth=20;
+    cas.lineCap="square";//square方块状，round圆状帽头
+    cas.stroke()
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+            float: left;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+<img src="../images/gray.png" _src="../images/windows.png" alt="">
+</body>
+</html>
+<script>
+    var imgs=document.getElementsByTagName("img");
+    console.log(imgs[0].src);
+    window.onscroll=function(){
+        for(var i=0;i<imgs.length;i++){
+            var current=imgs[i].offsetTop;
+            var st=document.documentElement.scrollTop||document.body.scrollTop;
+            var sh=document.documentElement.clientHeight;
+            if(current<=st+sh-200){
+                imgs[i].src=imgs[i].getAttribute("_src")
+            }
+        }
+    }
+</script>

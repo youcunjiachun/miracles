@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function New() {
+        var obj={};
+        var arg=Array.prototype.shift.call(arguments);
+        obj.__proto__=arg.prototype;
+        var result=arg.apply(obj,arguments);
+        if(result instanceof Object){
+            return result
+        }
+        else{
+            return obj
+        }
+    }
+    function Me(name) {
+        this.name=name
+    }
+    var me=New(Me,"rcl");
+    console.log(me.name)
+</script>
+<!--function create() {-->
+<!--let obj = {}-->
+<!--let Con = [].shift.call(arguments)-->
+<!--obj.__proto__ = Con.prototype-->
+<!--let result = Con.apply(obj, arguments)-->
+<!--return result instanceof Object ? result : obj-->
+<!--}-->

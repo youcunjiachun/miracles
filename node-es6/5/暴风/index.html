@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>暴风影音</title>
+    <link rel="stylesheet" href="./static/css/public.css"/>
+    <link rel="stylesheet" href="./static/css/baofeng.css"/>
+
+    <script src="./static/js/html5.js"></script>
+
+    <script type="text/javascript" src="./static/js/ujiuye.js"></script>
+    <!--
+        先绘制DOM树
+        浏览器去解析DOM树
+    -->
+
+</head>
+<body>
+<!--
+html5siv.js 解决没有功能性的html5标签的兼容性问题
+    document.createElement
+datalist  progress
+-->
+<header class="main_header">
+
+    <!--
+        main_box: 共用的可视区的宽
+        header: 不一样的，最起码高度不一样
+    -->
+    <div class="header main_box">
+        <div class="fl header_logo">
+            <a href="" class="logo">
+                暴风影音 我是logo
+            </a>
+        </div>
+        <div class="fr mini_nav">
+            <a href="">登录</a>
+            <a href="">注册</a>
+            <a href="">开通VIP</a>
+            <a href="">个人中心</a>
+            <a href="">暴风首页</a>
+        </div>
+        <!--
+            header:65
+            假设：超链接的行高/高 25
+            65-25 = 40
+            mini_nav：padding-top:20
+        -->
+    </div>
+
+</header>
+<!--
+    header_over
+-->
+<!--
+命名规范：
+    在js中，经常用驼峰式命名 如：mainNav  userInfo
+-->
+<nav class="main_nav main_box" id="mainNav">
+    <p class="nav">
+        <a href="" class="home">首页</a>
+        <a href="">点播片库</a>
+        <a href="">激活码兑换</a>
+    </p>
+</nav>
+<!--
+导航over
+-->
+
+<div class="main_box main_banner" id="main_banner">
+    <a href="">
+        <img src="./static/images/banner_1.jpg" width="1100" height="440" alt=""/>
+    </a>
+    <span class="btn btn-prev">上一张</span>
+    <span class="btn btn-next">下一张</span>
+
+    <div class="thumb_container">
+        <a index="0" href="">
+            <img src="./static/images/banner_pic_1.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="1" href="">
+            <img src="./static/images/banner_pic_2.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="2" href="">
+            <img src="./static/images/banner_pic_3.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="3" href="">
+            <img src="./static/images/banner_pic_4.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="4" href="">
+            <img src="./static/images/banner_pic_5.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="5" href="">
+            <img src="./static/images/banner_pic_6.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="6" href="">
+            <img src="./static/images/banner_pic_7.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="7" href="">
+            <img src="./static/images/banner_pic_8.jpg" width="66" height="48" alt=""/>
+        </a>
+        <a index="8" href="">
+            <img src="./static/images/banner_pic_9.jpg" width="66" height="48" alt=""/>
+        </a>
+
+    </div>
+</div>
+
+<!--
+banner图 over
+-->
+
+<div class="main_box main_vip pt30">
+    <!--
+        1、SEO有关系 搜索引擎是抓取你页面当中的文字的
+        2、也是为了给程序看的
+    -->
+    <div class="public_hd">
+        VIP特权
+    </div>
+    <div class="vip_container" id="vip_container">
+        <span class="btn btn-prev">上一页</span>
+        <span class="btn btn-next">下一页</span>
+        <!--
+            <div class="vip_slider"> 为什么要套一个此div？
+            为了方便写js。写js的时候我们再体会
+        -->
+        <div class="vip_slider">
+            <!--  在页面当中尽量避免空标签  -->
+            <ul>
+                <li class="vip_bg1">免广告</li>
+                <li class="vip_bg2">会员免费片库</li>
+                <li class="vip_bg3">点播折扣</li>
+                <li class="vip_bg4">智能提速</li>
+                <li class="vip_bg5">专属活动</li>
+                <li class="vip_bg6">尊贵标识</li>
+                <li class="vip_bg7">定制服务</li>
+                <li class="vip_bg8">1080P</li>
+                <li class="vip_bg9">加速获得暴豆</li>
+                <li class="vip_bg10">专属客服</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--
+vip 特权over
+-->
+<div class="main_box main_ad mt30">
+    <a href="">
+        <img src="./static/images/banner.jpg" width="1100" height="80" alt=""/>
+    </a>
+</div>
+<!--
+横通广告
+-->
+<!--
+强力推荐
+-->
+<div class="main_box main_qltj pt30">
+
+    <div class="public_hd">
+        强力推荐
+    </div>
+    <script type="text/javascript" src="./static/js/requestqltj.js"></script>
+    <div class="qltj_container" id="qltjContainer">
+
+        <!--<div class="film_list">
+            <div class="film_thumb">
+                <a href="">
+                    <img src="./static/images/51_270_360.jpg" width="205" height="287" alt=""/>
+                </a>
+                <span class="vip_user bgGreen">VIP专享</span>
+                <span class="vip_user bgOrange"><del>5元</del>VIP免费</span>
+                <span class="calri">标清</span>
+            </div>
+            <div class="film_desc">
+                <a href="">外乡人</a>
+                <p>上海外来人的心酸与甘甜</p>
+                <span class="score">9.1</span>
+            </div>
+        </div>-->
+
+    </div>
+</div>
+
+<!--
+热映大片
+-->
+<div class="main_box main_hot pt30">
+
+    <div class="public_hd">
+        热映大片
+    </div>
+
+    <div class="qltj_container" id="rydpContainer">
+        <script type="text/javascript" src="./static/js/requestrydp.js"></script>
+    </div>
+</div>
+<div class="main_box help">
+
+</div>
+
+<div class="main_box copyright">
+
+</div>
+<!--
+footer_over
+-->
+<script type="text/javascript" src="static/js/source.js"></script>
+<!--
+    js 是可以阻止页面往下执行，
+    而css不会阻塞，
+    所以css应该放在head上面，而没有特殊情况下js放在底部 紧挨body。 比如：html5shiv.js 必须放到页面顶部
+-->
+</body>
+</html>

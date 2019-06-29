@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+<com1 :fathermsg="msg" @func="send"></com1>
+</div>
+<template id="tem">
+    <div>我是子组件----{{fathermsg}}
+        <input @click="send" type="button" value="我是传值的按钮">
+    </div>
+</template>
+</body>
+</html>
+<script src="vue-2.4.0.js"></script>
+<script>
+    var com1={
+        template:"#tem",
+        props:["fathermsg"],
+        data(){
+            return {
+                sonmsg:"我是子组件向父组件传的值"
+            }
+        },
+        methods:{
+            send:function () {
+                this.$emit("func",this.sonmsg)
+            }
+        }
+    };
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            msg:"我是父组件"
+        },
+        methods:{
+            send(data){
+                console.log(data)
+            }
+
+        },
+        components:{
+            com1
+        }
+    })
+</script>

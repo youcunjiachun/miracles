@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // // document.cookie="user=123";
+    // document.cookie="user=123;password=456";
+    //
+    var current=new Date();
+    var s=current.getSeconds();
+    current.setSeconds(s+3);
+    document.cookie="user=123;expires="+current;
+    setInterval(function () {
+        console.log(document.cookie)
+    },1000)
+</script>

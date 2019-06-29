@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>123
+</ul>
+</body>
+</html>
+<script>
+    var ul =document.getElementsByTagName("ul")[0];
+    var inners=ul.childNodes;
+    console.log(inners)
+    inners.forEach(function (value) {
+        if(value.nodeType==1)value.style.color="red";
+        if(value.nodeType==3&&value.nodeValue.length!=5){console.log(value)}
+
+    })
+</script>

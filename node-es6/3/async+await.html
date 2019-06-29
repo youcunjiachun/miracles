@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function aa() {
+        return new Promise(function (resolved,rejected) {
+            setTimeout(
+                function () {
+                    console.log(222);
+                    resolved()
+                },2000
+            )
+        })
+    }
+    async function as() {
+        var a=await 111;
+        await aa();
+        await console.log(333);
+        console.log(a)
+    }
+    as()
+
+</script>

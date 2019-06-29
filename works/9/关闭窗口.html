@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>
+    关闭
+</button>
+</body>
+</html>
+<script>
+    var btn=document.getElementsByTagName("button")[0];
+    btn.onclick=function () {
+        setInterval(close,1000)
+
+    }
+    function close () {
+        var val=confirm("关闭窗口？");
+        if(val){
+            window.close()
+        }}
+
+</script>

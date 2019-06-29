@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>
+<script>
+    var ul=document.getElementsByTagName("ul")[0];
+    var newul=ul.cloneNode(true);
+    console.log(newul);
+    var li=document.createElement("li");
+    li.innerHTML="123";
+    ul.insertBefore(li,ul.children[0])
+</script>

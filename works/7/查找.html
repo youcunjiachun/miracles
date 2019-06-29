@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<button>查找</button>
+<p>这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读
+    这一章节的内容信息量会很大，不适合在非电脑环境下阅读</p>
+
+</body>
+</html>
+<script>
+    var input=document.getElementsByTagName("input")[0];
+    var btn=document.getElementsByTagName("button")[0];
+    var p=document.getElementsByTagName("p")[0];
+    var context=p.innerText;
+    btn.addEventListener("click",function () {
+        var arr=context.split(input.value);
+        var newarr= arr.join("<mark>"+input.value+"</mark>");
+        p.innerHTML=newarr
+
+    })
+</script>

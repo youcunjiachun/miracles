@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ::selection{
+            background-color:#f00;
+            color:#000;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: #04281e;
+        }
+        ul{
+            text-align: center;
+            line-height: 67px;
+            color:red;
+            font-size: 67px;
+        }
+        li{
+            line-height: 40px;
+            text-align: center;
+            background-color: RGBA(0,0,0,0.5);
+            color: #f00;
+            width: 1000px;
+            font-size: 20px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        div{
+            color:#fff;
+            font-size: 14px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+<ul>恐怖故事</ul>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    function ajax(url) {
+        return new Promise(function (resolved,rejected) {
+            $.ajax({
+                url:url,
+                dataType:"json",
+                success:function (data) {
+                    resolved(data);
+                }
+            })
+        })
+    };
+    async function getdata(url,flag) {
+        var a=await ajax(url);
+        if(flag==1){
+            var str="";
+            arr=a.showapi_res_body.pagebean.contentlist;
+            for(let i=0;i<arr.length;i++){
+                str+="<li onmouseover='getdata(\"http://route.showapi.com/955-2?id=" + arr[i].link + "&page=1&showapi_appid=96669&showapi_sign=9cc6c906d1224ff5ab2850a76de4310e&type=mj&page=1\",2)'>"+arr[i].title+"</li>"
+            }
+            $("ul").append(str);
+        }else{
+            $("li").hover(function () {
+                $(this).append("<div>"+a.showapi_res_body.text+"</div>")
+            },function () {
+                $(this).children().remove()
+            })
+
+        }
+    }
+    getdata("http://route.showapi.com/955-1?showapi_appid=96669&showapi_sign=9cc6c906d1224ff5ab2850a76de4310e&type=mj&page=1",1);
+</script>

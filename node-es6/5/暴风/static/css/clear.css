@@ -1,0 +1,26 @@
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,hr{
+    margin: 0;
+    font-size: 12px;
+}
+ul,ol{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.clearfix:after{
+    content:'';
+    display:block;
+    clear: both;
+
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix{
+    *zoom:1;
+}

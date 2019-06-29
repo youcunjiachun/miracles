@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+</body>
+</html>
+<script>
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr]
+        }else{
+            return getComputedStyle(obj,null)[attr]
+        }
+    }
+    function $(val) {
+        return document.getElementById(val)
+    };
+    console.log(getStyle($("box"),"width"))
+</script>

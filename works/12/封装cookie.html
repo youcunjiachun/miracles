@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function set(key,value,time) {
+        var date=new Date();
+        date.setSeconds(date.getSeconds()+time);
+        document.cookie=key+"="+value+";expires="+date;
+    }
+    // set("user","1234","100");
+    // document.cookie = "user=rcl";
+    // document.cookie = "password=123";
+    // console.log( document.cookie)
+    function search(key) {
+        var obj={};
+        var cook = document.cookie;
+        var arr = cook.split("; ");
+        var flag=true;
+        for (var i = 0; i < arr.length; i++) {
+            var newarr=arr[i].split("=");
+            obj[newarr[0]]=newarr[1];
+            if(newarr[0]==key){
+                return newarr[1];
+                flag=false
+            }
+        }
+        if(flag&&key){
+            return -1
+        }else{
+            return obj
+        }
+    }
+    // console.log(search("user"));
+    // console.log(search("name"));
+    // console.log(search());
+
+</script>

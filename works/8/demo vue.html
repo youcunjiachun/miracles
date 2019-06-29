@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">{{msg | filt}}</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.filter("filt",function (msg) {
+        return msg.replace(/曾经/g,"我也是+1")
+    });
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+            msg:"曾经，我也是曾经，我也是曾经，我也是曾经，我也是曾经，我也是曾经，我也是"
+        }
+    })
+</script>

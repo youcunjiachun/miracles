@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+</head>
+
+<body>
+    <div id="app">
+        <tabs></tabs>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+<template id="tabs-template">
+    <table border="1" align="center" width="60%" cellspacing="0">
+        <caption>购物车</caption>
+        <thead>
+            <tr>
+                <th>全选：<input type="checkbox" @click="checkAll"></th>
+                <th>名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>总价</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="goods in list">
+                <td><input type="checkbox" v-model="goods.isCheck" 
+                    @click="check(goods)"></td>
+                <td>{{goods.title}}</td>
+                <td>{{goods.price}}</td>
+                <td><button @click="sub(goods.id)">-</button>{{goods.count}}
+                    <button @click="plus(goods.id)">+</button></td>
+                <td>{{goods.price * goods.count}}</td>
+                <td><button @click="remove(goods.id)">删除</button></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">合计：{{money}}</td>
+            </tr>
+        </tfoot>
+    </table>
+</template>
+<script>
+    let list = [
+        { id: 1, title: '诸葛亮', price: 20, count: 1 ,isCheck:false},
+        { id: 2, title: '妲己', price: 10, count: 2 ,isCheck:false},
+        { id: 3, title: '程咬金', price: 200, count: 3,isCheck:false },
+        { id: 4, title: '鲁班', price: 5, count: 1,isCheck:false }
+    ];
+    var vm = new Vue({
+        el: "#app",
+        components: {
+            tabs: {
+                template: `#tabs-template`,
+                data() {
+                    return {
+                        list,
+                        isAll:false,
+                        money:0
+                    }
+                },
+                methods: {
+                    check(goods){
+                        goods.isCheck=!goods.isCheck;
+                        this.calcMoney();
+                    },
+                    calcMoney(){
+                        let sum=0;
+                        this.list.forEach((value,index)=>{
+                            if(value.isCheck){
+                                sum+=value.price * value.count;
+                            }
+                        })
+                        this.money=sum;
+                    },
+                    checkAll(){
+                        this.isAll=!this.isAll;
+                        this.list.forEach((value,index)=>{
+                            value.isCheck=this.isAll;
+                        })
+                        this.calcMoney();//算合计
+                    },
+                    remove(id) {
+                        if (confirm('确定要删除吗？')) {
+                            for (let i = 0; i < this.list.length; i++) {
+                                if (this.list[i].id == id) {
+                                    this.list.splice(i, 1);
+                                }
+                            }
+                        }
+                        this.calcMoney();//算合计
+                    },
+                    sub(id) {
+                        for (let i = 0; i < this.list.length; i++) {
+                            if (this.list[i].id == id) {
+                                if (this.list[i].count > 1) {
+                                    this.list[i].count--;
+                                }
+                            }
+                        }
+                        this.calcMoney();//算合计
+                    },
+                    plus(id) {
+                        for (let i = 0; i < this.list.length; i++) {
+                            if (this.list[i].id == id) {
+                                this.list[i].count++;
+                            }
+                        }
+                        this.calcMoney();//算合计
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>

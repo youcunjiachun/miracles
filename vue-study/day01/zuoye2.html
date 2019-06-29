@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p><input type="text" placeholder="请输入姓名" :value="name" @input="name=$event.target.value"></p>
+    <p ><select v-model="sex">
+        <option value=1 selected>男</option>
+        <option value=0>女</option>
+    </select></p>
+    <p><input type="number" placeholder="请输入年龄" v-model="age"></p>
+    <p><input type="tel" placeholder="请输入电话号码" v-model="tel" ></p>
+    <button @click="add">创建新用户 </button>
+    <ul>
+        <li v-for="item,index in list">
+            {{item}}<a @click.prevent="del(index)" :style="{color:'red'}">删除</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            name:"",
+            sex:1,
+            age:0,
+            tel:0,
+            list:[
+
+            ]
+        },
+        methods:{
+            add(){
+                console.log(this.sex);
+                this.sex=this.sex==0?"女":"男";
+                this.list.push({name:this.name,sex:this.sex,age:this.age,tel:this.tel})
+                this.sex=this.sex=="女"?0:1
+            },
+            del(i){
+                this.list.splice(i,1)
+            }
+
+        }
+    })
+</script>

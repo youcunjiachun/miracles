@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo{
+            width: 200px;
+            height: 200px;
+            background-color: #F00;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <li>
+        
+    </li>
+    <div></div>
+    <a href=""></a>
+</div>
+</body>
+</html>
+<script>
+    // class Person{};
+    // console.log(Person instanceof Function)
+/*    function Parent(val) {
+        this.val=val
+    }
+    Parent.prototype.getValue=function () {
+        console.log(this.val)
+    };
+    function Child(val) {
+        Parent.call(this,val)
+    }
+    Child.prototype=Object.create(Parent.prototype,{
+        constructor:{
+            value:Child,
+            enumerable:false,
+            writable:true,
+            configurable:true
+        }
+    });
+    var child=new Child(1);
+    child.getValue()*/
+//class继承;
+/*    class Parent{
+        constructor(val){
+            this.val=val
+        }
+        getValue(){
+            console.log(this.val)
+        }
+    }
+    class Child extends Parent{
+        constructor(value){
+            super(value)
+        }
+    }
+    }
+    let child=new Child(2);
+    child.getValue()*/
+// var p=new Proxy(target,handler)
+//     var arr=[1,2,3,4,5];
+//     const sum = arr.reduce((acc, current) => acc + current, 100)
+//     console.log(sum)
+//     function *foo() {
+//        
+//     }
+//     async function test() {
+//         return "1"
+//     }
+//     console.log(test())
+//     var demo=document.getElementById("demo");
+//     var n=1;
+//     var w=demo.offsetWidth;
+//     hamdle=requestAnimationFrame(function (time) {
+//         n+=10;
+//         demo.style.width=n+w+"px";
+//         handle=requestAnimationFrame(arguments.callee);
+//         n>=1000&&cancelAnimationFrame(handle)
+//     })
+//遍历dom树
+//     var root=document.getElementsByTagName("html")[0];
+//     var result=[];
+//     function domTree(root) {
+//         var child=Array.from(root.children);
+//         child.forEach((val)=>{
+//             if(val.children.length>0){
+//                 domTree(val)
+//         }else{
+//                 result.push(val)
+//         }
+//         })
+//         return result
+//     }
+//     console.log(domTree(root));
+    console.dir(Function.__proto__)
+</script>

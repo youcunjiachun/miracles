@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2,3,4];
+    console.log(arr.reduce(function (val1,val2) {
+        return val1+val2
+    }))//val1是上次计算累加的值/返回值是单个值
+</script>
+//您的 reducer 函数的返回值分配给累计器，
+//该返回值在数组的每个迭代中被记住，并最后成为最终的单个结果值。

@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">123234344</div>
+<div id="demo"></div>
+<!-- <img src="bright.jpg" alt=""> -->
+
+<script>
+
+    function Push(obj){
+        this.div=document.getElementById(obj);
+        this.x=0;
+        this.y=0;
+        this.left=0;
+        this.tops=0;
+        var _this = this;
+        this.div.onmousedown = function(e){
+            _this.down(e)
+        }
+        document.onmouseup=function(){
+            _this.up();
+        }
+    }
+
+    Push.prototype.down=function(e){
+
+        var ev = e || window.event;
+        this.x = ev.clientX - this.div.offsetLeft; //鼠标到元素左边的位置
+        this.y = ev.clientY - this.div.offsetTop; //鼠标到元素上边的位置
+        var _this = this;
+        document.onmousemove = function(e){
+            _this.move(e);
+        }
+        if(this.div.setCapture){
+            this.div.setCapture();
+        }
+
+        return false
+    }
+
+    Push.prototype.up=function(){
+
+        document.onmousemove = null;
+        if(this.div.setCapture){
+            this.div.releaseCapture();
+        }
+    }
+
+    Push.prototype.move=function(e){
+        var ev = e || window.event;
+        this.left = ev.clientX-this.x;
+        this.tops = ev.clientY-this.y;
+
+        this.div.style.left = this.left + "px";
+        this.div.style.top = this.tops + "px";
+    }
+
+    new Push("box");
+
+    function Push2(obj){
+        Push.apply(this,[obj]);
+    }
+    Push2.prototype = new Push("demo");
+    Push2.prototype.move = function(e){
+        var ev = e || window.event;
+        this.left = ev.clientX-this.x;
+        this.tops = ev.clientY-this.y;
+        if(this.left <= 0){this.left = 0}
+        if(this.tops <= 0){this.tops = 0}
+
+        this.div.style.left = this.left + "px";
+        this.div.style.top = this.tops + "px";
+    }
+
+    var p2=new Push2("demo");
+
+    /*  */
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 30px;
+            height: 30px;
+            background: red;
+            opacity: 0.2;
+            position: absolute;
+            display: none;
+        }
+        .img1{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .img2{
+            width: 600px;
+            height: 600px;
+            display: inline-block;
+            background: url("zy2.jpg");
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<img class="img1" src="zy1.jpg">
+<span class="img2" src="zy2.jpg"></span>
+
+<script>
+    var div = document.getElementsByTagName("div")[0]
+    var span1 = document.getElementsByTagName("img")[0]
+    var span2 = document.getElementsByTagName("span")[0]
+    var d = document.documentElement ||document.body
+    document.addEventListener("mousemove",move)
+    function move(e) {
+        var ev = e || window.event
+        div.style.position = "absolute";
+        div.style.top = ev.clientY+d.scrollTop+"px";
+        div.style.left = ev.clientX+"px"
+    }
+
+    span1.onmousemove = function () {
+        div.style.display = "block"
+    };
+    span1.onmouseout = function (ev) {
+        var ev=ev||window.event;
+        ev.stopPropagation();
+        console.log("1")
+        div.style.display = "none"
+    }
+</script>
+</body>
+</html>

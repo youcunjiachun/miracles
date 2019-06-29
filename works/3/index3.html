@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .all{
+            width: 400px;
+            height: 40px;
+            margin: 0 auto;
+            position: relative;
+        }
+        ul li{
+            width: 100px;
+            height: 40px;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+        }
+        div{
+            position: absolute;
+            top: 40px;
+            left: 0;
+        }
+        .all div:nth-of-type(1){
+            width: 400px;
+            height: 400px;
+            background-color: #f00;
+            display:none;
+        }
+        .all div:nth-of-type(2){
+            width: 400px;
+            height: 400px;
+            background-color: #0f0;
+            display:none;
+        }
+        .all div:nth-of-type(3){
+            width: 400px;
+            height: 400px;
+            background-color: #00f;
+            display:none;
+        }
+        .all div:nth-of-type(4){
+            width: 400px;
+            height: 400px;
+            background-color: #0ff;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="all">
+<ul>
+    <li>一</li>
+    <li>二</li>
+    <li>三</li>
+    <li>四</li>
+</ul>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</div>
+</body>
+</html>
+<script>
+    var lis=document.getElementsByTagName("li");
+    var divs=document.getElementsByClassName("all")[0].getElementsByTagName("div");
+    var all=document.getElementsByClassName("all");
+    for(var i=0;i<lis.length;i++){
+        (function (j) {
+            lis[j].onmouseenter=function(){
+                for(var k=0;k<divs.length;k++){
+                    lis[k].style.backgroundColor="#fff";
+                    divs[k].style.display="none"
+                }
+                this.style.backgroundColor="red";
+                divs[j].style.display="block"
+            };
+        })(i);
+    }
+</script>

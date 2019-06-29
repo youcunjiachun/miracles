@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            background-color: RGBA(0,0,255,0.5);
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="obj" class="demo">121312</div>
+    <div class="demo2" :class="[color]">132312</div>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            color:"red",
+            obj:{
+                red:true
+            }
+        },
+        created(){
+            console.log(this)
+        },
+        methods:{
+
+        },
+        watch:{
+
+        },
+        computed:{
+
+        }
+    })
+</script>

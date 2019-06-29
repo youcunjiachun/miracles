@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Me(name) {
+        this.arr=[1,2,3,4];
+        this.name=name
+    };
+    function He() {
+        Me.apply(this)
+    }
+    var he= new He();
+    var he2=new He();
+    console.log(he.arr);
+    he.arr.push(2);
+    console.log(he.arr);
+    console.log(he2.arr)
+
+</script>

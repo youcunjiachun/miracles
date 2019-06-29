@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Me(name,age) {
+        this.name=name;
+        this.age=age;
+        console.log(this);
+    }
+    Me.prototype.say=()=>{
+        // alert(1)
+    }
+    var me=New(Me,"rcl",21);
+    console.log(me.name);
+    me.say();
+    function New() {
+        var obj={};
+        console.log(arguments);
+        var arg=Array.prototype.shift.call(arguments);
+        obj.__proto__=arg.prototype;
+        var result=arg.apply(obj,arguments);
+        console.log(result instanceof Object);
+        return result instanceof Object? result:obj //得到对象
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table></table>
+</body>
+</html>
+<script>
+    var arr=[
+        {"name":"rcl","age":14},
+        {"name":"wh","age":16},
+        {"name":"zk","age":17},
+        {"name":"ms","age":18}
+    ];
+    var table=document.getElementsByTagName("table")[0];
+    for(var i=0;i<arr.length;i++){
+        var tr=document.createElement("tr");
+        table.appendChild(tr);
+        var trs=document.getElementsByTagName("tr");
+        for(var key in arr[i]){
+            console.log(key,arr[i][key]);
+            var td=document.createElement("td");
+            trs[i].appendChild(td);
+            td.innerHTML=key+":"+arr[i][key]
+        }
+    }
+</script>

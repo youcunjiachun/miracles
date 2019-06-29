@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        height: 10000px;
+    }
+    ul{
+        position: fixed;
+        left: 50px;
+        top: 30%;
+    }
+    li{
+        width: 50px;
+        line-height: 70px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    #demo div{
+        width: 100%;
+        line-height: 500px;
+        border: 1px solid #f00;
+        font-size: 300px;
+        text-align: center;
+    }
+</style>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<div id="demo">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</div>
+</body>
+</html>
+<script src="../js/jquery.js"></script>
+<script>
+    console.log($("#demo div").outerHeight());
+    $(window).scroll(function () {
+        var tops=$("body,html").scrollTop();
+        $("div").each(function () {
+            var divtop=$(this).offset().top;
+            if(divtop<=tops){
+                $("li").eq($(this).index()).css("background","red").siblings().css("background","#fff")
+            }
+        }
+        )
+    });
+    $("li").click(function () {
+        $("body,html").animate({"scrollTop":$(this).index()*502},200)
+    })
+</script>

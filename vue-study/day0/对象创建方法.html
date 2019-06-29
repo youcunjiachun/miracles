@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//工厂模式
+// function create(name,age){
+//     let obj={};
+//     obj.name=name;
+//     obj.age=age;
+//     obj.eat=function(){
+//         console.log("食屎啦你")
+//     }
+//     return obj
+// }
+// console.log(create("rcl",21))   缺点：无法判断类型，因为都是Object的实例
+
+
+
+
+
+//构造函数模式
+
+// function Me(name,age){
+//     this.name=name;
+//     this.age=age;
+//     this.eat=function(){
+//         console.log("食屎啦你")
+//     }
+// }
+// console.log(new Me("rcl",21))   缺点：方法无法复用
+
+
+//原型模式       把属性和方法都加入到prototype上
+// function Dog(){};
+// Dog.prototype.name="rcl";
+// Dog.prototype.age=21;
+// Dog.prototype.eat=function(){
+//     console.log("食屎啦你")
+// }     缺点也很明显，不能自定义属性，如果是引用类型会被
+
+
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+            <router-link to="/main">main</router-link>
+         <router-view></router-view>
+    </div>
+    <template id="name">
+        <div>
+            <h1>main</h1>
+            <router-link to="/main/login">登录</router-link>
+            <router-link to="/main/resister">注册</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+</body>
+</html>
+<script src="vue-2.4.0.js"></script>
+<script src="vue-router-3.0.1.js"></script>
+<script>
+    var main={
+        template:"#name"
+    }
+    var login={
+        template:"<h1>登录</h1>"
+    }
+    var resister={
+        template:"<h1>注册</h1>"
+    }
+    var myRouter=new VueRouter({
+        routes:[
+            {path:"/main"
+            ,component:main,
+            children:[
+                {path:"login",component:login},
+                {path:"resister",component:resister}
+            ]
+            },
+
+        ]
+    })
+    var vm=new Vue({
+        el:"#demo",
+        data:{
+
+        },
+        methods:{
+
+        },
+        router:myRouter
+    })
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <myuser></myuser>
+    <mypass></mypass>
+</div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    Vue.component("myuser",{
+        template:"<h1>我是一个全局组件</h1>"
+    });
+    let vm=new Vue({
+        el:"#app",
+        components:{
+            mypass:{
+                template:"<h1>我是一个局<me></me>部组件</h1>",
+                components:{
+                    me:{
+                        template:"<h2>我是一个子组件<h2>"
+                    }
+                }
+            }
+        }
+
+    })
+</script>
+
+<!--//组件化和模块化的区别-->
+<!--组件化针对ui界面，把一个界面分成多个组件，方便代码的复用-->
+<!--模块化从代码逻辑进行划分，方便代码分层开发，保证每个功能的单一性-->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function New(A){
+        var a={};
+        a.__proto__=A.prototype;
+        A.apply(a,arguments);
+        return a
+    };
+    function Cat() {
+    }
+    Cat.prototype.jiao=function () {
+        alert("喵喵")
+    };
+    var cat= New(Cat);
+    cat.jiao()
+
+</script>

@@ -1,0 +1,11 @@
+1.安装node.js;
+2.全局安装webpack;
+npm install -g webpack........
+3.创建项目，在项目根目录里进行初始化;
+npm init..........................
+4.安装webpack-cli;
+npm install webpack-cli -D.........
+5.卸载webpack-cli全局安装webpack-cli；
+npm uninstall webpack-cli
+npm install -g webpack-cli.........（5和4部分重复，仔细看下
+6.命令行输入webpack --mode development

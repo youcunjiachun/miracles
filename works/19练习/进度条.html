@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<style>
+    .pic{width:0%;height:3px;background:#f00;position:absolute;top:0;left:0;}
+</style>
+<body>
+<div class="loading">
+    <div class="pic"></div>
+</div>
+<header>
+    <img src="55061.jpg" alt="">
+    <img src="8602627166.jpg" alt="">
+</header>
+<script>
+    $('.pic').animate({width:"20%"},100)
+</script>
+<section>
+    <img src="55061.jpg" alt="">
+    <img src="8602627166.jpg" alt="">
+</section>
+<script>
+    $('.pic').animate({width:"50%"},100)
+</script>
+<footer>
+    <img src="5061.jpg" alt="">
+    <img src="08602627166.jpg" alt="">
+</footer>
+<script>
+    $('.pic').animate({width:"100%"},100,function(){
+        $('.loading').fadeOut();
+    })
+</script>
+</body>
+</html>

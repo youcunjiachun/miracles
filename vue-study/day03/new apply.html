@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // function Me(a,b,c) {
+    
+    // }
+    // function mynew() {
+    //     let obj={};
+    //     let func=Array.prototype.shift.call(arguments);
+    //     obj.__proto__=func.prototype;
+    //     console.log(arguments);
+    //     func.apply(obj,arguments);
+    //     return obj
+    // };
+    // console.log(mynew(Me,1,2,3))
+    // new的原理
+
+
+
+
+
+    // Function.prototype.mycall=function (context) {
+    //     context=context||window
+    //     context.fn=this;
+    //     let arg=[...arguments].slice(1);
+    //     let result=context.fn(...arg);
+    //     delete context.fn
+    //     return result
+    // }
+    //
+    // call的实现
+
+    // Function.prototype.myapply=function (context) {
+    //     context=context||window;
+    //     context.fn=this;
+    //     if(arguments[1]){
+    //         result=context.fn(...arguments[1])
+    //     }else{
+    //         result=context.fn()
+    //     }
+    //     delete context.fn;
+    //     return result
+    // }
+    //
+    // //apply的实现
+
+
+    Function.prototype.myBind = function (context) {
+        if (typeof this !== 'function') {
+            throw new TypeError('Error')
+        }
+        const _this = this;
+        const args = [...arguments].slice(1);
+        // 返回一个函数
+        return function F() {
+            // 因为返回了一个函数，我们可以 new F()，所以需要判断
+            if (this instanceof F) {
+                return new _this(...args, ...arguments)
+            }
+            return _this.apply(context, args.concat(...arguments))
+        }
+    }
+
+</script>

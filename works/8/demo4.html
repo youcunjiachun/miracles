@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            margin: 0 auto;
+            width: 500px;
+        }
+        span{
+            width: 40px;
+            background-color: #ccc;
+            float: right;
+            text-align: center;
+            line-height: 20px;
+            margin-left: 5px;
+        }
+        li{
+            height: 20px;
+            width: 500px;
+            background-color: #f00;
+            margin-bottom: 5px;
+        }
+        button{
+            display: block;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><i>1</i><span>删除</span><span>修改</span></li>
+    <li><i>2</i><span>删除</span><span>修改</span></li>
+    <li><i>3</i><span>删除</span><span>修改</span></li>
+    <li><i>4</i><span>删除</span><span>修改</span></li>
+    <li><i>5</i><span>删除</span><span>修改</span></li>
+</ul>
+<button>添加</button>
+</body>
+</html>
+<script>
+    var lis=document.getElementsByTagName("li");
+    function change(x) {
+        var lis=document.getElementsByTagName("li");
+        var spans=lis[x].getElementsByTagName("span");
+        var i=lis[x].getElementsByTagName("i")[0];
+        spans[1].addEventListener("click",function () {
+            var result=prompt("请输入要修改值");
+            i.innerHTML=result
+        });
+        spans[0].addEventListener("click",function () {
+            spans[0].parentNode.parentNode.removeChild(spans[0].parentNode);
+
+        })
+    };
+    for(var i=0;i<lis.length;i++){
+        change(i)
+    }
+    var btns=document.getElementsByTagName("button");
+    var is=document.getElementsByTagName("i");
+    btns[0].addEventListener("click",function () {
+        var lis=document.getElementsByTagName("li");
+        var spans=lis[0].getElementsByTagName("span");
+        var result=prompt("输入");
+        var li=lis[0].cloneNode(true);
+        spans[0].parentNode.parentNode.appendChild(li);
+        is[lis.length-1].innerHTML=result;
+        change(lis.length-1)
+    })
+</script>

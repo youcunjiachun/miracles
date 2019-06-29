@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div v-cloak id="demo">
+    <input v-model="n1" type="text" placeholder="姓名">
+    <input v-model="n2" type="text" placeholder="性别">
+    <input v-model="n3" @keyup.enter="add" type="text" placeholder="年龄">
+    <button @click="add">添加</button>
+    <input v-model="search" type="text"  placeholder="根据姓名搜索" v-focus v-thiscolor="'red'">
+    <table border="1px" style="cell-padding: 0;border-collapse: collapse">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>
+                删除
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="items in filter(search)" :key="items.id">
+            <td>{{items.id}}</td>
+            <td>{{items.name}}</td>
+            <td>{{items.sex}}</td>
+            <td>{{items.age}}</td>
+            <td>
+                <button @click="del(items.id)">删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.directive("focus",{
+        inserted:function (el) {
+            el.focus()
+        }});
+    Vue.directive("color",{
+        bind:function (el,binding) {
+            el.style.color=binding.value
+        }
+    });
+    Vue.directive("thiscolor",function (el,binding) {
+        el.style.color=binding.value
+    });
+    var vm = new Vue({
+        el: "#demo",
+        data: {
+            lists: [
+                {id: 1, name: "tom", sex: "男", age: 18},
+                {id: 2, name: "jack", sex: "男", age: 20},
+                {id: 3, name: "rose", sex: "女", age: 18}
+            ],
+            n1: "",
+            n2: "",
+            n3: "",
+            search:""
+        },
+        methods: {
+            del: function (id) {
+                this.lists.forEach(function (value, i) {
+                    if (id == value.id) {
+                        this.lists.splice(i, 1)
+                    }
+                }.bind(this))
+            },
+            add: function () {
+                this.lists.push({id: this.lists.length + 1, name: this.n1, sex: this.n2, age: this.n3})
+            },
+            filter:function (search) {
+                var newlist =  this.lists.filter(function (value) {
+                     return value.name.indexOf(search)!=-1
+                });
+                return newlist;
+            }
+        }
+    });
+</script>

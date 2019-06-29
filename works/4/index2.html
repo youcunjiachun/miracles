@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+
+        }
+        input{
+            width: 100px;
+            height: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><span>javascript</span><input type="text"><a href="#">编辑</a><a href="#">保存</a><a href="#">取消</a></li>
+    <li><span>javascript</span><input type="text"><a href="#">编辑</a><a href="#">保存</a><a href="#">取消</a></li>
+    <li><span>javascript</span><input type="text"><a href="#">编辑</a><a href="#">保存</a><a href="#">取消</a></li>
+</ul>
+</body>
+</html>
+<script>
+    function fn (x) {
+        var lis=document.getElementsByTagName("li");
+        var as=lis[x].getElementsByTagName("a");
+        var spans=lis[x].getElementsByTagName("span");
+        var inputs=lis[x].getElementsByTagName("input");
+        as[1].style.display="none";
+        as[2].style.display="none";
+        as[0].addEventListener("click",function () {
+            inputs[0].value=spans[0].innerText;
+            as[1].style.display="inline-block";
+            as[2].style.display="inline-block";
+            inputs[0].style.display="inline-block";
+            spans[0].style.display="none";
+            this.style.display="none"
+        });
+        as[1].addEventListener("click",function () {
+            spans[0].style.display="inline-block";
+            spans[0].innerHTML=inputs[0].value;
+            inputs[0].style.display="none";
+            this.style.display="none";
+            as[2].style.display="none";
+            as[0].style.display="inline-block"
+        });
+        as[2].addEventListener("click",function () {
+            spans[0].style.display="inline-block";
+            inputs[0].style.display="none";
+            this.style.display="none";
+            as[1].style.display="none";
+            spans[0].display="inline-block";
+            as[0].style.display="inline-block"
+        })
+    }
+    fn(0);fn(2);fn(1)
+
+</script>

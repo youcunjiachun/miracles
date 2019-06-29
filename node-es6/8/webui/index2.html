@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index2.css">
+</head>
+<body>
+    <div class="header">
+        <div class="left"><img src="images/logo.jpg" alt=""></div>
+        <div class="right">
+            <div class="login"><img src="images/login.jpg" alt=""></div>
+            <div class="menu">
+                <div class="menuout">
+                    <div class="sanjiao"></div>
+                    <ul>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                        <li><img src="images/home.jpg" alt=""> 优知首页</li>
+                    </ul>
+                </div>
+                <img src="images/menu.jpg" alt=""></div>
+        </div>
+    </div>
+    <div class="banner"><img src="images/banner.jpg" alt=""></div>
+    <div class="navicon">
+        <div class="one"><img src="images/one.jpg" alt="">运营推广</div>
+        <div class="two"><img src="images/two.jpg" alt="">产品经理</div>
+        <div class="three"><img src="images/three.jpg" alt="">UI设计</div>
+        <div class="four"><img src="images/four.jpg" alt="">WEB前端</div>
+        <div class="five"><img src="images/five.jpg" alt="">程序开发</div>
+    </div>
+    <div class="hot">
+        <div class="top">热点推荐<a href="#">更多></a></div>
+        <div class="content">
+            <div class="line">
+                <div class="shang">
+                <img src="images/hot1.jpg" alt="">
+                <h3>淘宝天猫售后"偏袒"规</h3>
+                <p>对于刚起步做电商的朋友们来说，淘宝天猫规则制度一定……</p>
+                <span><img src="images/jielun.jpg" alt=""><i>周杰伦  08 月 24 日 18:30</i></span>
+            </div>
+            <div class="shang">
+                    <img src="images/hot1.jpg" alt="">
+                    <h3>淘宝天猫售后"偏袒"规</h3>
+                    <p>对于刚起步做电商的朋友们来说，淘宝天猫规则制度一定……</p>
+                    <span><img src="images/jielun.jpg" alt=""><i>周杰伦  08 月 24 日 18:30</i></span>
+                </div>
+            </div>
+            <div class="line">
+                    <div class="shang">
+                    <img src="images/hot1.jpg" alt="">
+                    <h3>淘宝天猫售后"偏袒"规</h3>
+                    <p>对于刚起步做电商的朋友们来说，淘宝天猫规则制度一定……</p>
+                    <span><img src="images/jielun.jpg" alt=""><i>周杰伦  08 月 24 日 18:30</i></span>
+                </div>
+                <div class="shang">
+                        <img src="images/hot1.jpg" alt="">
+                        <h3>淘宝天猫售后"偏袒"规</h3>
+                        <p>对于刚起步做电商的朋友们来说，淘宝天猫规则制度一定……</p>
+                        <span><img src="images/jielun.jpg" alt=""><i>周杰伦  08 月 24 日 18:30</i></span>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="push">
+        <div class="content">
+                <div class="top">运营推广<a href="#">更多></a></div>
+                <ul>
+                    <li><p>前51.com副总裁王武佳：一切伟大的创造来源于行业间的相互借鉴模仿</p><img src="images/appdesign.jpg" alt=""></li>
+                    <li><p>前51.com副总裁王武佳：一切伟大的创造来源于行业间的相互借鉴模仿</p><img src="images/appdesign.jpg" alt=""></li>
+                    <li><p>前51.com副总裁王武佳：一切伟大的创造来源于行业间的相互借鉴模仿</p><img src="images/appdesign.jpg" alt=""></li>
+                    <li><p>前51.com副总裁王武佳：一切伟大的创造来源于行业间的相互借鉴模仿</p><img src="images/appdesign.jpg" alt=""></li>
+                </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="leftline"></div>
+        <div class="rightline"></div>
+        <p>关注我们</p>
+        <div class="icons">
+            <img src="images/wechat.jpg" alt="">
+            <img src="images/weibo.jpg" alt="">
+            <img src="images/tel.jpg" alt="">
+        </div>
+        <div class="friendlink">
+            <i>Copyright©1999-2015 北京中公未来教育咨询有限公司<br>.All Rights Reserved 京ICP备10218183号<br>电脑版 | APP下载</i>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+        document.documentElement.style.fontSize=100+"px";
+    function debounce(fn){
+        var timer=null;
+        return function(){
+            clearTimeout(timer)
+           timer=setTimeout(fn,100)
+        }
+    }
+    window.onresize=debounce(function(){
+        var clientWidth=document.documentElement.clientWidth;
+    var fs = null;
+    if(clientWidth>720){
+        fs=100
+    }
+    else{
+        fs=(clientWidth*100)/720
+    }
+    document.documentElement.style.fontSize=fs+"px";
+    console.log(fs)
+    })
+</script>

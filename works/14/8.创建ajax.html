@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.声明ajax
+        var ajax=new XMLHttpRequest();
+        // console.log(ajax.readyState)
+        // ie5,6
+            // new ActiveXObject("Microsoft.XMLHTTP")
+        
+        // 2.建立接口 api   ajax.open(methed,url,async)   methed (post get)   url:地址，传输或获取的地址，get方式需要将传输的内容通过？的形式写在地址后面    async:定义异步或同步  true是异步的，false是同步的。
+        ajax.open("get","1.txt?aa=10",true);
+        // console.log(ajax.readyState)
+
+        // 3.发送请求
+        ajax.send();
+
+        // 4.监听结果
+        /* 
+            ajax.readyState 状态值
+            0：声明初始化，没有调用open
+            1: 接口建立（调用了open），没有调用send
+            2: 调用send
+            3: 等待结果
+            4: 成功
+
+        */
+       /* 
+        ajax.status  状态码
+        1xx：信息响应类，表示接收到请求并且继续处理
+        2xx：处理成功响应类，表示动作被成功接收、理解和接受
+        3xx：重定向响应类，为了完成指定的动作，必须接受进一步处理
+        4xx：客户端错误，客户请求包含语法错误或者是不能正确执行
+        5xx：服务端错误，服务器不能正确执行一个正确的请求
+       */
+        ajax.onreadystatechange = function(){
+            // 状态一改变函数就要执行一次
+            console.log(ajax.readyState);//获取状态值 0-4
+            console.log(ajax.status);
+            if(ajax.readyState == 4 && ajax.status == 200){
+                console.log(ajax.responseText);//将结果以字符串的形式返回
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

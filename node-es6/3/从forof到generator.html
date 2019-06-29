@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[1,2,3,4,5];
+    // console.dir(arr)
+    function iterator(arr) {
+        var i=0;
+         return{
+             next:function () {
+                 return {value:arr[i++],done:i>arr.length}
+             }
+         }
+    }
+    var it=iterator(arr);
+    var flag=false;
+    while(!flag){
+        var result=it.next();
+        console.log(result);
+        flag=result.done
+    }
+</script>

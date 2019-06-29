@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function add(da) {
+        var a=0;
+        a=a+da;
+        return function (n) {
+            a+=da;
+            return a
+        };
+    }
+    console.log(add(1)(2)(3))
+</script>

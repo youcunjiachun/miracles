@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index5.css">
+</head>
+<body>
+<div class="header">
+        <div class="leftside"><a href="#"><img src="images/leftctl.jpg" alt=""></a></div>
+        <h1>运营推广<span></span></h1>
+        <div class="rightside">
+            <div class="login"><img src="images/login.jpg" alt=""></div>
+            <div class="menu"><img src="images/menu.jpg" alt=""></div>
+        </div>
+    </div>
+    <div class="nav">
+        <h1>优就业电商教程-论直通车实操技巧</h1>
+        <p><i><img class="jielun" src="images/jielun.jpg" alt="">周杰伦</i> <i><img src="images/clock.jpg" alt="">
+        08月24日18:30</i><i> <img class="eye" src="images/eye.jpg" alt="">6768浏览</i><i>
+         <img src="images/discuss.jpg" alt="">16评论</i></p>
+    </div>
+    <div class="content">
+        <p>【文章摘要】不管是初级运营还是高阶运营，我们都有三个共同的目标：拉新、留存、促活。对企业来说，我们的所有工作价值都必须通过这三个目标的相关数据进行体现。关于初级跟高阶的运营的区别，不同的经历的人有不同的理解视角，今个儿主要是说说我的理解。</p>
+    <img src="images/river.jpg" alt="">
+    <p>做运营就像是玩游戏的打怪升级，从初级菜鸟到高阶油条，从一无所知道到能够带新人勇于冲锋陷阵的独胆一面。</p>
+    <p>我们总是对比自己好的人充满好奇心，在贫困时渴望体验下富人的生活，所以做运营的也应该想知道做高阶运营是种怎么样的体验!</p>
+</div>
+<div class="footer">
+    <div class="discuss">
+        <h3><img src="images/heart.jpg" alt="">加载中</h3>
+        <div class="share">
+            <img src="images/share.jpg" alt="">
+            <img src="images/discuss_big.jpg" alt="">
+            <img src="images/star.jpg" alt="">
+            <img src="images/awesome.jpg" alt="">
+        </div>
+        <i>发表评论</i>
+        <div class="adddiscuss">
+            <input type="text" placeholder="我来说两句吧">
+            <input type="submit">
+        </div>
+        <div class="alldiscuss">全部评论(19)</div>
+        <div class="discussion">
+            <div class="top">
+                <div class="left">李慕云说道:</div>
+                <div class="right"><span><img src="images/discuss.jpg" alt="">支持(125)</span><span><img src="images/discuss.jpg" alt="">回复(0)</span></div>
+            </div>
+            <div class="center">08月24日 18:30</div>
+            <div class="bottom">社交功能的增强，这会支付宝应该能全部实现闭环了。</div>
+        </div>
+        <div class="section">
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    document.documentElement.style.fontSize=100+"px";
+    function debounce(fn){
+        var timer=null;
+        return function(){
+            clearTimeout(timer)
+           timer=setTimeout(fn,100)
+        }
+    }
+    window.onresize=debounce(function(){
+        var clientWidth=document.documentElement.clientWidth;
+    var fs = null;
+    if(clientWidth>720){
+        fs=100
+    }
+    else{
+        fs=(clientWidth*100)/720
+    }
+    document.documentElement.style.fontSize=fs+"px";
+    console.log(fs)
+    })
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+<template id="parentt">
+    <div>
+        {{count}}
+        <child @func="add"></child>
+    </div>
+</template>
+<template id="childt">
+    <div><button @click="add">{{num}}</button></div>
+</template>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        components:{
+            parent:{
+                data(){
+                    return {
+                        count:0
+                    }
+                },
+                template:"#parentt",
+                components:{
+                    child:{
+                        template:"#childt",
+                        data(){
+                            return {
+                                num:0
+                            }
+                        },
+                        methods:{
+                            add(){
+                                this.num++;
+                                this.$emit("func")
+                            }
+                        }
+                    }
+                },
+                methods:{
+                    add(){
+                        this.count++
+                    }
+                }
+            }
+        }
+    })
+</script>
