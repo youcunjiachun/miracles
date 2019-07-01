@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //冒泡排序
+    // let arr=[1,2,4,23,4,12,5,53,5,365,6,31,6,6,56,21,]
+    // function sort(arr){
+    //     let current=null;
+    //     for(let i=0;i<arr.length;i++){
+    //         for(let j=i-1;j<arr.length;j++){
+    //             if(arr[j]>arr[j+1]){
+    //                 current=arr[j+1]
+    //                 arr[j]=arr[j+1]
+    //                 arr[j+1]=current
+    //             }
+    //         }
+    //     }
+    //     return arr
+    // }
+    // console.log(sort(arr))
+
+    //选择排序
+    function selectionSort(arr) {
+    var len = arr.length;
+    var minIndex, temp;
+    for (var i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {     //寻找最小的数
+                minIndex = j;                 //将最小数的索引保存
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+    return arr;
+}
+
+</script>

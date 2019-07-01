@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //函数防抖
+    function debounce(fn,delay){
+        let timeout=null;
+        return function(){
+            clearTimeout(timeout)
+            timeout=setTimeout(()=>{
+                fn.apply(this,arguments)
+            },delay)
+        }
+    }
+    window.onresize=debounce(function(){
+        console.log("debounce")
+    },100)
+
+
+    //函数节流
+    function throttle(fn,delay){
+        let time=0;
+        return function(){
+            let now=Date.now();
+            if(now-time>=delay){
+                fn();
+                time=now
+            }
+        }
+    }
+    window.onresize=throttle(function(){
+        console.log("throttle")
+    },1000)
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo{
+            width: 400px;
+            height: 400px;
+            background-color: #f00;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+
+    </div>
+</body>
+</html>
+<script>
+    //hash模式http://www.xxx.com/#/+hash
+    //当hash变化并不会刷新页面，而且会触发一个hashchang时间
+    //可以通过监听这个事件来实现更新页面的操作
+    window.onhashchange=function(){
+        document.getElementById("demo").style.backgroundColor="#0f0"
+    }//可以通过hashchange事件来进行下一步的操作
+
+
+
+    //history模式，h5新加入了2个api，pushstate和replacestate
+    //
+
+</script>
