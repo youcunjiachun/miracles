@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{public.name}}年龄{{age}}
+  </div>
+  <div id="demo">
+    {{public.name}}年龄{{age}}
+  </div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+  let public={
+    name:"rcl",
+    get(){
+      return this.name
+    },
+    set(newval){
+      this.name=newval
+    }
+  }
+  let vm1=new Vue({
+    el:"#app",
+    data:{
+      public,
+	  age:21
+    }
+  })
+  let vm2=new Vue({
+    el:"#demo",
+    data:{
+      public,
+	  age:100
+    }
+  })
+</script>

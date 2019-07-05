@@ -14,7 +14,7 @@
     function throttle(fn,delay){
         let time=0;
         return function(){
-            let now=Date.now()
+            let now=Date.now();
             if(now-time>=delay){
                 fn();
                 time=now
