@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" >
+    <input type="text" v-check="{type:'email',value:'msg'}" :value=val @input="val=$event.target.value">
+  </div>
+</body>
+</html>
+<script src="../lib/vue-2.4.0.js"></script>
+<script>
+  let vm=new Vue({
+    el:"#app",
+    data:{
+      msg:"",
+      val:""
+    },
+    directives:{
+      check:{
+        // inserted(el){
+        //   console.log(el);
+        // },
+        update(el,binding){
+          console.log(el,binding)
+        }
+      }
+    }
+  })
+</script>
