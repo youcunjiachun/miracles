@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/react.development.js"></script>
+  <script src="../lib/react-dom.development.js"></script>
+  <script src="../lib/babel.min.js"></script>
+</head>
+<body>
+  <div id="demo"></div>
+  <script type="text/babel">
+  let arr=[
+    {
+      name:"rcl",
+      age:"88"
+    },
+    {
+      name:"xjp",
+      age:99
+    }
+  ]
+  let ele=(
+    <ul>
+    {arr.map((val,index)=>{
+      return <li key={index}>姓名{val.name}年龄{val.age}</li>
+    })}
+    <img src="http://a.hiphotos.baidu.com/video/pic/item/730e0cf3d7ca7bcb4af906c8b0096b63f724a853.jpg"/>
+    </ul>
+  )
+  let demo=document.getElementById("demo")
+  ReactDOM.render(
+    ele,demo
+  )
+  </script>
+</body>
+</html>
